@@ -10,7 +10,7 @@ public class MyCube : MonoBehaviour {
 	private Vector3[] vertices, normals;
 	private Mesh mesh;
 
-	private void Generate(){		
+	private void Generate(){
 		GetComponent<MeshFilter>().mesh = mesh = new Mesh();
 		mesh.name = "Procedural Cube";
 		CreateVertices();

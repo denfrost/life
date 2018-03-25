@@ -27,8 +27,8 @@ public class FractalPlant : MonoBehaviour {
 	
 	void Start () {
 		if (depth == 0){
-			FractalPlant tree = new GameObject("Fractal Child").AddComponent<FractalPlant>().createOne(this, 0, depth+1);
-			createZero(tree, depth+1, 0);
+			//FractalPlant tree = new GameObject("Fractal Child").AddComponent<FractalPlant>().createOne(this, 0, depth+1);
+			createZero(this, depth+1, 0);
 		}
 		gameObject.AddComponent<MeshFilter>().mesh = mesh;
 		gameObject.AddComponent<MeshRenderer>().material = material;

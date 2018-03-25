@@ -11,8 +11,8 @@ public class FractalBinaryTree : MonoBehaviour {
 
 	private static Vector3[] childDirections = {
 		Vector3.up*2,
-		(Vector3.up * 2) + Vector3.right,
-		(Vector3.up * 2) - Vector3.right,
+		(Vector3.up * 2f) + Vector3.right,
+		(Vector3.up * 2f) - Vector3.right,
 		(Vector3.up * 1) + Vector3.right,
 		(Vector3.up * 1) - Vector3.right		
 	};
