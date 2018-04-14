@@ -34,7 +34,7 @@ public class FractalBinaryTree : MonoBehaviour {
 		gameObject.AddComponent<MeshRenderer>().material = material;
 	}
 
-	private FractalBinaryTree createZero(FractalBinaryTree parent, int depth){
+	private FractalBinaryTree createZero(FractalBinaryTree parent, int depth){		
 		maxDepth = parent.maxDepth;
 		this.depth = depth;
 		if (depth < maxDepth){

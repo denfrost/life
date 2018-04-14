@@ -29,7 +29,7 @@ public class Fractal : MonoBehaviour {
 		Quaternion.identity,
 	};
 	
-	void Start () {
+	void Start () {		
 		if (materials == null)
 			initializaMaterials();
 
