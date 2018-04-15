@@ -1,5 +1,8 @@
 Library
 obj
 *.csproj
-*.meta
-
+.vscode
+Temp
+ProjectSettings
+Assets/Plugins
+Assets/Plugins.meta

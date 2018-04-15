@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class InhibitorActivator : MonoBehaviour{
     
@@ -8,28 +7,24 @@ public class InhibitorActivator : MonoBehaviour{
     public Gradient coloring;
 
     public int steps = 100;
-    public float alpha = -0.005f, beta = 10f, dx = 1, dt = 0.001f, da = 1, db = 100;
+    public float alpha = -0.005f, beta = 10f, dx = 1, dt = 0.001f, da = 1, db = 100;    
     
     private Texture2D texture;
     private float[,] activator, inhibitor;
+    private int c = 0;
+    public GameObject inhibitorObject;
     
     private void Awake () {
         texture = new Texture2D(resolution, resolution, TextureFormat.RGB24, true);
         texture.name = "InhivatorActivator";
-        texture.wrapMode = TextureWrapMode.Clamp;        
-        texture.filterMode = FilterMode.Trilinear;
-        texture.anisoLevel = 9;
+        //texture.wrapMode = TextureWrapMode.Clamp;
+        //texture.filterMode = FilterMode.Trilinear;
+        //texture.anisoLevel = 9;
         GetComponent<MeshRenderer>().material.mainTexture = texture;
-        FillTexture();
-    }
-    
-    private float NormalDist(){
-        float u1 = 1f - Random.value; //uniform(0,1] random doubles
-        float u2 = 1f - Random.value;
-        return 0 + 0.05f * Mathf.Sqrt(-2f * Mathf.Log(u1)) *
-                               Mathf.Sin(2f * Mathf.PI * u2); //random normal(0,1)        
-        //mean + stdDev * randStdNormal; //random normal(mean,stdDev^2)
-    }
+        //FillTexture();
+        InitalizeMorphogens();
+        inhibitorObject.GetComponent<MeshRenderer>().material.mainTexture = new Texture2D(resolution, resolution, TextureFormat.RGB24, true);
+    }    
     
     private void InitalizeMorphogens(){
         activator = new float[resolution, resolution];
@@ -37,10 +32,11 @@ public class InhibitorActivator : MonoBehaviour{
         for (int i = 0; i < resolution; i++){  
             for (int j = 0; j < resolution; j++){
                 //texture.SetPixel(x, y, Color.white * Random.value);
-                activator[i,j] = NormalDist();
-                inhibitor[i,j] = NormalDist();
+                activator[i,j] = Random.value;
+                inhibitor[i,j] = Random.value;
+                //Debug.Log(activator[i,j]);
             }
-        }    
+        }
     }
 
     private int[] getRolledIndices(int i, int j, int h, int v){        
@@ -54,7 +50,7 @@ public class InhibitorActivator : MonoBehaviour{
         return new []{a, b};
     }
 
-    private float laplecian(int i, int j, float[,] morphogen)
+    private float laplacian(int i, int j, float[,] morphogen)
     {
         float cnt = 0f;
         int[] tmp;
@@ -69,9 +65,9 @@ public class InhibitorActivator : MonoBehaviour{
         return (cnt - 4 * morphogen[i, j]) / Mathf.Pow(dx, 2);
     }
     
-    private void FillTexture(){
-        InitalizeMorphogens();
-        for (int c = 0; c < steps; c++)
+    private void Update()
+    {
+        if (c < steps)
         {
             float[,] tmpA = new float[resolution,resolution];
             float[,] tmpB = new float[resolution,resolution];
@@ -80,29 +76,34 @@ public class InhibitorActivator : MonoBehaviour{
                 for (int j = 0; j < resolution; j++)
                 {
                     tmpA[i, j] = activator[i, j] +
-                                 dt * (da * laplecian(i, j, activator) + fitzNagumoA(activator[i, j], inhibitor[i, j]));
+                                 dt * (da * laplacian(i, j, activator) + FitzNagumoA(activator[i, j], inhibitor[i, j]));
                     tmpB[i, j] = inhibitor[i, j] +
-                                 dt * (db * laplecian(i, j, inhibitor) + fitzNagumoB(activator[i, j], inhibitor[i, j]));
+                                 dt * (db * laplacian(i, j, inhibitor) + FitzNagumoB(activator[i, j], inhibitor[i, j]));
                 }
             }
-
             activator = tmpA;
             inhibitor = tmpB;
-        }
-        for (int i = 0; i < resolution; i++){  
-            for (int j = 0; j < resolution; j++){
-                texture.SetPixel(j, i, coloring.Evaluate(activator[i,j]));                
+            Texture2D texture2D = ((Texture2D) inhibitorObject.GetComponent<MeshRenderer>().material.mainTexture); 
+            for (int i = 0; i < resolution; i++){  
+                for (int j = 0; j < resolution; j++){
+                    //texture.SetPixel(j, i, coloring.Evaluate(activator[i,j]));
+                    //texture.SetPixel(j, i, Color.white * activator[i,j]);
+                    texture.SetPixel(j, i, coloring.Evaluate(activator[i,j]));
+                    texture2D.SetPixel(j, i, coloring.Evaluate(inhibitor[i,j]));
+                }
             }
+            texture.Apply();
+            texture2D.Apply();
+            c++;
         }
-        texture.Apply();
     }
 
-    private float fitzNagumoA(float a, float b)
+    private float FitzNagumoA(float a, float b)
     {
         return a - Mathf.Pow(a, 3) - b + alpha;
     }
     
-    private float fitzNagumoB(float a, float b)
+    private float FitzNagumoB(float a, float b)
     {
         return beta * (a - b);
     }

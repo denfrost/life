@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 433636104}
-  - component: {fileID: 433636103}
+  - component: {fileID: 433636105}
   m_Layer: 0
   m_Name: FractalBinaryTree
   m_TagString: Untagged
@@ -211,21 +211,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &433636103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114979059739728576, guid: 104138b12677c4898abc24f04dc66678,
-    type: 2}
-  m_PrefabInternal: {fileID: 1176044797}
-  m_GameObject: {fileID: 433636102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b4eda298e5b4819856e3df6141d24b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 204f25ae1ec4d442e952a7595db30178, type: 2}
-  maxDepth: 7
 --- !u!4 &433636104
 Transform:
   m_ObjectHideFlags: 0
@@ -240,6 +225,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &433636105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 433636102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1b68014e7844b91b6b05788f1f756f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 0}
+  material: {fileID: 0}
+  maxDepth: 0
 --- !u!1 &437757806
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +247,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 437757807}
-  - component: {fileID: 437757808}
+  - component: {fileID: 437757809}
   m_Layer: 0
   m_Name: FractalPlant
   m_TagString: Untagged
@@ -269,7 +268,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &437757808
+--- !u!114 &437757809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -277,12 +276,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 437757806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0083552538196496588b2edb92d628fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 71732e0861062496bb4d4502280843db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 204f25ae1ec4d442e952a7595db30178, type: 2}
-  maxDepth: 5
+  mesh: {fileID: 0}
+  material: {fileID: 0}
+  maxDepth: 0
 --- !u!1001 &1176044797
 Prefab:
   m_ObjectHideFlags: 0
@@ -336,7 +335,8 @@ Prefab:
       propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: 204f25ae1ec4d442e952a7595db30178, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 104138b12677c4898abc24f04dc66678, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1222966998
@@ -347,7 +347,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1222967000}
-  - component: {fileID: 1222966999}
+  - component: {fileID: 1222967001}
   m_Layer: 0
   m_Name: Sierpinski
   m_TagString: Untagged
@@ -355,20 +355,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1222966999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1222966998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc97d5ae963cd494bad5a9284a380b05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 204f25ae1ec4d442e952a7595db30178, type: 2}
-  maxDepth: 8
 --- !u!4 &1222967000
 Transform:
   m_ObjectHideFlags: 0
@@ -382,6 +368,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -23}
+--- !u!114 &1222967001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1222966998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d4d82b220ee4ac3a65297b38076ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 0}
+  material: {fileID: 0}
+  maxDepth: 0
 --- !u!1 &1658742485
 GameObject:
   m_ObjectHideFlags: 0

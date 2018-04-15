@@ -46,7 +46,7 @@ public class TextureCreator : MonoBehaviour {
                 float sample = Noise.Sum(method, point, frequency, octaves, lacunarity, persistence);
                 if (type != NoiseMethodType.Value) 
                     sample = sample * 0.5f + 0.5f;
-                texture.SetPixel(x, y, coloring.Evaluate(sample));
+                texture.SetPixel(x, y, Color.white * sample);
             }
         }
         texture.Apply();
