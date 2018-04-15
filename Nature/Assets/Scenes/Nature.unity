@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44449028, g: 0.4879158, b: 0.54061216, a: 1}
+  m_IndirectSpecularColor: {r: 0.4444733, g: 0.48789626, b: 0.54060537, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -236,9 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1b68014e7844b91b6b05788f1f756f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 0}
-  material: {fileID: 0}
-  maxDepth: 0
+  mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: add337c94a09a1a4aa713b9e6ace7c98, type: 2}
+  maxDepth: 7
 --- !u!1 &437757806
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,9 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71732e0861062496bb4d4502280843db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 0}
-  material: {fileID: 0}
-  maxDepth: 0
+  mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: add337c94a09a1a4aa713b9e6ace7c98, type: 2}
+  maxDepth: 5
 --- !u!1001 &1176044797
 Prefab:
   m_ObjectHideFlags: 0
@@ -379,9 +379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d4d82b220ee4ac3a65297b38076ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 0}
-  material: {fileID: 0}
-  maxDepth: 0
+  mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: add337c94a09a1a4aa713b9e6ace7c98, type: 2}
+  maxDepth: 8
 --- !u!1 &1658742485
 GameObject:
   m_ObjectHideFlags: 0
