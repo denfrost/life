@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\juanc\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_Nature.-903281922.00" t="ExcludeRecursive" />
+    <e p="C:\Users\juanc\Documents\life\Nature" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets\Scripts" t="Include">
+        <e p="Boids" t="Include">
+          <e p="Flock.cs" t="Include" />
+          <e p="GlobalFlock.cs" t="Include" />
+        </e>
+        <e p="L-Systems" t="Include">
+          <e p="Fractal.cs" t="Include" />
+          <e p="FractalBinaryTree.cs" t="Include" />
+          <e p="FractalPlant.cs" t="Include" />
+          <e p="Sierpinski.cs" t="Include" />
+        </e>
+        <e p="Morphing" t="Include">
+          <e p="AffineTransform.cs" t="Include" />
+          <e p="Animals.cs" t="Include" />
+          <e p="Animals2.cs" t="Include" />
+          <e p="MyCube.cs" t="Include" />
+          <e p="MyGrid.cs" t="Include" />
+        </e>
+        <e p="TuringPattern" t="Include">
+          <e p="InhibitorActivator.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Assets\Shaders" t="Include">
+        <e p="MyShader.shader" t="Include" />
+        <e p="Test.shader" t="Include" />
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="Nature.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

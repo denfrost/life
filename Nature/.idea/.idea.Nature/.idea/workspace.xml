@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ee2b0b7f-c51f-416f-8a1d-c347f4950e06" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/scripts/Boids/Flock.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/scripts/Boids/Flock.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Hit.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Hit.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials/Eyes_outer.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials/Eyes_outer.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials/NormalMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials/NormalMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials/texture.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials/texture.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials/texture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Materials/texture.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Tiger_Mesh.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiger/Tiger_Mesh.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/Materials/cruscarp.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/Materials/cruscarp.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/cruscarp.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/cruscarp.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/cruscarp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/cruscarp.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/cruscarp.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/crucarp/cruscarp.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Affine.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Affine.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Morphing/AffineTransform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Morphing/AffineTransform.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Noise.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Noise/Noise.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Noise/Noise.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Noise/TextureCreator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Noise/TextureCreator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Noise/TextureCreatorInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Noise/TextureCreatorInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/CameraTransformation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/CameraTransformation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyPostionTransformation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyPostionTransformation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyRotationTransformation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyRotationTransformation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyScaleTransformation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyScaleTransformation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyTransformation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyTransformation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyTransformationGrid.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/MyTransformationGrid.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/RandomColor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Render/RandomColor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/TuringPattern/InhibitorActivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/TuringPattern/InhibitorActivator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nature.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Nature.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../alife/src/SandPrison.java" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AffineTransform.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/scripts/Morphing/AffineTransform.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="123" selection-start-line="26" selection-start-column="123" selection-end-line="26" selection-end-column="123" />
+              <folding>
+                <marker date="1524361681484" expanded="true" signature="64:1260" ph="{...}" />
+                <marker date="1524361681484" expanded="true" signature="285:1258" ph="{...}" />
+                <marker date="1524361681484" expanded="true" signature="321:1252" ph="{...}" />
+                <marker date="1524361681484" expanded="true" signature="625:1099" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlobalFlock.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/scripts/Boids/GlobalFlock.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+              <folding>
+                <marker date="1524370305136" expanded="true" signature="60:856" ph="{...}" />
+                <marker date="1524370305136" expanded="true" signature="283:603" ph="{...}" />
+                <marker date="1524370305136" expanded="true" signature="377:600" ph="{...}" />
+                <marker date="1524370305136" expanded="true" signature="623:854" ph="{...}" />
+                <marker date="1524370305136" expanded="true" signature="659:851" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flock.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/scripts/Boids/Flock.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="783">
+              <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+              <folding>
+                <marker date="1524369901492" expanded="true" signature="54:2017" ph="{...}" />
+                <marker date="1524369901492" expanded="true" signature="241:303" ph="{...}" />
+                <marker date="1524369901492" expanded="true" signature="322:789" ph="{...}" />
+                <marker date="1524369901492" expanded="true" signature="412:656" ph="{...}" />
+                <marker date="1524369901492" expanded="true" signature="812:2015" ph="{...}" />
+                <marker date="1524369901492" expanded="true" signature="1068:1597" ph="{...}" />
+                <marker date="1524369901492" expanded="true" signature="1114:1587" ph="{...}" />
+                <marker date="1524369901492" expanded="true" signature="1266:1573" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Morphing/MyGrid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Boids/GlobalFlock.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Morphing/Animals2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Morphing/Animals.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Morphing/AffineTransform.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/FractalPlant.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/FractalBinaryTree.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Boids/Flock.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/Fractal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/Sierpinski.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/TuringPattern/InhibitorActivator.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/scripts/TuringPattern/InhibitorActivator.cs" />
+        <option value="$PROJECT_DIR$/Assets/scripts/Morphing/AffineTransform.cs" />
+        <option value="$PROJECT_DIR$/Assets/scripts/Boids/Flock.cs" />
+        <option value="$PROJECT_DIR$/Assets/scripts/Boids/GlobalFlock.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="240" />
+    <option name="y" value="135" />
+    <option name="width" value="1440" />
+    <option name="height" value="810" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Nature" type="483dac07:UnityExplorerNode$Root" />
+            </path>
+            <path>
+              <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Nature" type="483dac07:UnityExplorerNode$Root" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Nature" type="483dac07:UnityExplorerNode$Root" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee2b0b7f-c51f-416f-8a1d-c347f4950e06" name="Default" comment="" />
+      <created>1524359213635</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1524359213635</updated>
+      <workItem from="1524359219764" duration="596000" />
+      <workItem from="1524359874356" duration="10153000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10749000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32987553" />
+      <window_info anchor="bottom" id="Unit Tests" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="UnityProjectConfiguration" isUnityUI="true" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/Morphing/AffineTransform.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+          <folding>
+            <marker date="1524361681484" expanded="true" signature="64:1260" ph="{...}" />
+            <marker date="1524361681484" expanded="true" signature="285:1258" ph="{...}" />
+            <marker date="1524361681484" expanded="true" signature="321:1252" ph="{...}" />
+            <marker date="1524361681484" expanded="true" signature="625:1099" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/Fractal.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+          <folding>
+            <marker date="1523751724124" expanded="false" signature="6:78" ph="..." />
+            <marker date="1523751724124" expanded="true" signature="117:1980" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="320:425" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="477:695" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="714:957" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="997:1200" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1050:1197" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1237:1448" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1316:1443" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1497:1898" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1523:1586" ph="/* material = parent.material; ... */" />
+            <marker date="1523751724124" expanded="true" signature="1924:1977" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/TuringPattern/InhibitorActivator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <marker date="1524360056223" expanded="true" signature="67:3978" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="447:997" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="586:716" ph="/* texture.wrapMode = TextureWrapMode.Clamp; ... */" />
+            <marker date="1524360056223" expanded="true" signature="1045:1493" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="1201:1487" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="1253:1477" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="1557:1816" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="1879:2343" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="2374:3771" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="2403:3765" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="2586:3047" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="2653:3033" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="3272:3678" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="3328:3664" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="3350:3486" ph="/* texture.SetPixel(j, i, coloring.Evaluate(activator[i,j])); ... */" />
+            <marker date="1524360056223" expanded="true" signature="3820:3880" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="3933:3976" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/TuringPattern/InhibitorActivator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+          <folding>
+            <marker date="1524360056223" expanded="true" signature="67:3978" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="447:997" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="586:716" ph="/* texture.wrapMode = TextureWrapMode.Clamp; ... */" />
+            <marker date="1524360056223" expanded="true" signature="1045:1493" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="1201:1487" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="1253:1477" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="1557:1816" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="1879:2343" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="2374:3771" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="2403:3765" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="2586:3047" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="2653:3033" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="3272:3678" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="3328:3664" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="3350:3486" ph="/* texture.SetPixel(j, i, coloring.Evaluate(activator[i,j])); ... */" />
+            <marker date="1524360056223" expanded="true" signature="3820:3880" ph="{...}" />
+            <marker date="1524360056223" expanded="true" signature="3933:3976" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/Morphing/MyGrid.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1524356681307" expanded="true" signature="117:1557" ph="{...}" />
+            <marker date="1524356681307" expanded="true" signature="220:1324" ph="{...}" />
+            <marker date="1524356681307" expanded="true" signature="597:847" ph="{...}" />
+            <marker date="1524356681307" expanded="true" signature="603:690" ph="/* vertices[i] = new Vector3(x, y); ... */" />
+            <marker date="1524356681307" expanded="true" signature="1024:1262" ph="{...}" />
+            <marker date="1524356681307" expanded="true" signature="1076:1258" ph="{...}" />
+            <marker date="1524356681307" expanded="true" signature="1327:1512" ph="/* private void OnDrawGizmos () { ... */" />
+            <marker date="1524356681307" expanded="true" signature="1537:1555" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/Morphing/Animals.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+          <folding>
+            <marker date="1524356681260" expanded="true" signature="57:539" ph="{...}" />
+            <marker date="1524356681260" expanded="true" signature="100:537" ph="{...}" />
+            <marker date="1524356681260" expanded="true" signature="256:472" ph="{...}" />
+            <marker date="1524356681260" expanded="true" signature="281:387" ph="/* vertices[i] = new Vector3(a.x+(x*a.z), a.y, a.z); ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/Fractal.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding>
+            <marker date="1523751724124" expanded="false" signature="6:78" ph="..." />
+            <marker date="1523751724124" expanded="true" signature="117:1980" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="320:425" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="477:695" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="714:957" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="997:1200" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1050:1197" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1237:1448" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1316:1443" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1497:1898" ph="{...}" />
+            <marker date="1523751724124" expanded="true" signature="1523:1586" ph="/* material = parent.material; ... */" />
+            <marker date="1523751724124" expanded="true" signature="1924:1977" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/FractalBinaryTree.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="42" column="66" lean-forward="true" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+          <folding>
+            <marker date="1523751724140" expanded="false" signature="6:78" ph="..." />
+            <marker date="1523751724140" expanded="true" signature="127:2402" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="267:434" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="486:648" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="667:963" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="686:844" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1039:1788" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1118:1435" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1465:1770" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1873:2400" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="2149:2382" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/FractalPlant.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+          <folding>
+            <marker date="1523751724140" expanded="false" signature="6:78" ph="..." />
+            <marker date="1523751724140" expanded="true" signature="122:2537" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="262:427" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="479:640" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="659:950" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="678:831" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1026:1947" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1107:1609" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1639:1929" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="2023:2535" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="2299:2517" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/L-Systems/Sierpinski.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+          <folding>
+            <marker date="1523751724140" expanded="false" signature="6:78" ph="..." />
+            <marker date="1523751724140" expanded="true" signature="120:1883" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="260:354" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="406:502" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="521:697" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="540:578" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="766:1120" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="843:1017" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1189:1543" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1266:1440" ph="{...}" />
+            <marker date="1523751724140" expanded="true" signature="1611:1881" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/Morphing/Animals2.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+          <folding>
+            <marker date="1524356681276" expanded="true" signature="119:1371" ph="{...}" />
+            <marker date="1524356681276" expanded="true" signature="222:1327" ph="{...}" />
+            <marker date="1524356681276" expanded="true" signature="600:850" ph="{...}" />
+            <marker date="1524356681276" expanded="true" signature="1027:1265" ph="{...}" />
+            <marker date="1524356681276" expanded="true" signature="1079:1261" ph="{...}" />
+            <marker date="1524356681276" expanded="true" signature="1351:1369" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/Morphing/AffineTransform.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="123" selection-start-line="26" selection-start-column="123" selection-end-line="26" selection-end-column="123" />
+          <folding>
+            <marker date="1524361681484" expanded="true" signature="64:1260" ph="{...}" />
+            <marker date="1524361681484" expanded="true" signature="285:1258" ph="{...}" />
+            <marker date="1524361681484" expanded="true" signature="321:1252" ph="{...}" />
+            <marker date="1524361681484" expanded="true" signature="625:1099" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/Boids/GlobalFlock.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding>
+            <marker date="1524370305136" expanded="true" signature="60:856" ph="{...}" />
+            <marker date="1524370305136" expanded="true" signature="283:603" ph="{...}" />
+            <marker date="1524370305136" expanded="true" signature="377:600" ph="{...}" />
+            <marker date="1524370305136" expanded="true" signature="623:854" ph="{...}" />
+            <marker date="1524370305136" expanded="true" signature="659:851" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/Boids/Flock.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+          <folding>
+            <marker date="1524369901492" expanded="true" signature="54:2017" ph="{...}" />
+            <marker date="1524369901492" expanded="true" signature="241:303" ph="{...}" />
+            <marker date="1524369901492" expanded="true" signature="322:789" ph="{...}" />
+            <marker date="1524369901492" expanded="true" signature="412:656" ph="{...}" />
+            <marker date="1524369901492" expanded="true" signature="812:2015" ph="{...}" />
+            <marker date="1524369901492" expanded="true" signature="1068:1597" ph="{...}" />
+            <marker date="1524369901492" expanded="true" signature="1114:1587" ph="{...}" />
+            <marker date="1524369901492" expanded="true" signature="1266:1573" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

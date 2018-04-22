@@ -8,13 +8,15 @@ public class AffineTransform : MonoBehaviour
     public float[] zs = {1, 1, 1};
     public float rate = 0.5f;
     private float nextTime;
+    //public Mesh mesh;
     
     private void Update(){
         if (Time.time >= nextTime)
         {
             nextTime = Time.time + rate;
-            Mesh mesh = GetComponent<MeshFilter>().mesh;
-            Vector3[] vertices = mesh.vertices;
+            Vector3[] vertices = GetComponent<SkinnedMeshRenderer>().sharedMesh.vertices;
+            //Vector3[] vertices = mesh.vertices;
+            Mesh mesh = new Mesh();
             Vector3 a;
             for (int i = 0; i < vertices.Length; i++)
             {
@@ -26,6 +28,7 @@ public class AffineTransform : MonoBehaviour
             }
             mesh.vertices = vertices;
             mesh.RecalculateBounds();
+            GetComponent<SkinnedMeshRenderer>().sharedMesh = mesh;
         }
     }
 }
