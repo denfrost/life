@@ -59,6 +59,7 @@ public class FractalBinaryTree : MonoBehaviour {
 		transform.parent = parent.transform;		
 		transform.localPosition = childDirections[form];
 		transform.localRotation = childOrientations[form];
+		transform.localScale = Vector3.one;
 		if (depth < maxDepth){
 			FractalBinaryTree tree = new GameObject("Fractal Child").AddComponent<FractalBinaryTree>().createOne(this, 0, depth+1);
 			return new GameObject("Fractal Child").AddComponent<FractalBinaryTree>().createOne(tree, 0, depth+2);

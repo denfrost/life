@@ -20,7 +20,8 @@ public class InhibitorActivator : MonoBehaviour{
         //texture.wrapMode = TextureWrapMode.Clamp;
         //texture.filterMode = FilterMode.Trilinear;
         //texture.anisoLevel = 9;
-        GetComponent<MeshRenderer>().material.mainTexture = texture;        
+        //GetComponent<MeshRenderer>().material.mainTexture = texture;
+        GetComponent<SkinnedMeshRenderer>().material.mainTexture = texture;
         //FillTexture();
         InitalizeMorphogens();
         inhibitorObject.GetComponent<MeshRenderer>().material.mainTexture = new Texture2D(resolution, resolution, TextureFormat.RGB24, true);

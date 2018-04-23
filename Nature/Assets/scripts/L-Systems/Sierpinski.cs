@@ -37,9 +37,8 @@ public class Sierpinski : MonoBehaviour {
 			Sierpinski tree2 = createA(tree, 2, depth+1);
 			Sierpinski tree3 = createB(tree2, 2, depth+1);
 			return tree3;
-		}
-		else 
-			return new GameObject("A"+depth).AddComponent<Sierpinski>().create(parent, form, depth);
+		} 
+		return new GameObject("A"+depth).AddComponent<Sierpinski>().create(parent, form, depth);
 	}
 
 	private Sierpinski createB(Sierpinski parent, int form, int depth){
@@ -50,9 +49,8 @@ public class Sierpinski : MonoBehaviour {
 			Sierpinski tree2 = createB(tree, 1, depth+1);
 			Sierpinski tree3 = createA(tree2, 1, depth+1);
 			return tree3;
-		}
-		else 
-			return new GameObject("B"+depth).AddComponent<Sierpinski>().create(parent, form, depth);
+		}		 
+		return new GameObject("B"+depth).AddComponent<Sierpinski>().create(parent, form, depth);
 	}
 
 	private Sierpinski create(Sierpinski parent, int form, int depth){
@@ -63,6 +61,7 @@ public class Sierpinski : MonoBehaviour {
 		transform.parent = parent.transform;		
 		transform.localPosition = childDirections[form];
 		transform.localRotation = childOrientations[form];
+		transform.localScale = Vector3.one;
 		return this;
 	}
 }

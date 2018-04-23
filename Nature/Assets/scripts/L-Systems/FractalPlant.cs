@@ -26,15 +26,17 @@ public class FractalPlant : MonoBehaviour {
 	};
 	
 	void Start () {
-		if (depth == 0){
-			//FractalPlant tree = new GameObject("Fractal Child").AddComponent<FractalPlant>().createOne(this, 0, depth+1);
+		if (depth == 0){			
 			createZero(this, depth+1, 0);
 		}
-		gameObject.AddComponent<MeshFilter>().mesh = mesh;
-		gameObject.AddComponent<MeshRenderer>().material = material;
+		else
+		{
+			gameObject.AddComponent<MeshFilter>().mesh = mesh;
+			gameObject.AddComponent<MeshRenderer>().material = material;
+		}
 	}
 
-	private FractalPlant createZero(FractalPlant parent, int form, int depth){
+	private void createZero(FractalPlant parent, int form, int depth){
 		maxDepth = parent.maxDepth;
 		this.depth = depth;				
 		if (depth < maxDepth){
@@ -50,8 +52,7 @@ public class FractalPlant : MonoBehaviour {
 			new GameObject("Fractal Child").AddComponent<FractalPlant>().createOne(parent, 0, depth+1);
 			new GameObject("Fractal Child").AddComponent<FractalPlant>().createOne(parent, 0, depth+1);
 			new GameObject("Fractal Child").AddComponent<FractalPlant>().createOne(parent, 2, depth+1);
-		}
-		return this;
+		}		
 	}
 	
 	private FractalPlant createOne(FractalPlant parent, int form, int depth){
@@ -62,6 +63,7 @@ public class FractalPlant : MonoBehaviour {
 		transform.parent = parent.transform;		
 		transform.localPosition = childDirections[form];
 		transform.localRotation = childOrientations[form];
+		transform.localScale = Vector3.one;
 		if (depth < maxDepth){
 			FractalPlant tree = new GameObject("Fractal Child").AddComponent<FractalPlant>().createOne(this, 0, depth+1);
 			return new GameObject("Fractal Child").AddComponent<FractalPlant>().createOne(tree, 0, depth+2);
