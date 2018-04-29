@@ -141,9 +141,10 @@ GameObject:
   - component: {fileID: 4857602482558554}
   - component: {fileID: 95376131675265426}
   - component: {fileID: 114225918264071006}
+  - component: {fileID: 136495132056715722}
   m_Layer: 0
   m_Name: carp
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -861,7 +862,7 @@ Transform:
   m_GameObject: {fileID: 1322397003872164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4668137926318234}
   - {fileID: 4707899596655132}
@@ -942,10 +943,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8340b180e2c743fab99d9411a81c61c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0.5
-  maxSpeed: 2
-  rotationSpeed: 4
-  neighborDistance: 3
+  MinSpeed: 0.5
+  MaxSpeed: 2
+  RotationSpeed: 4
+  NeighborDistance: 3
+  MinBite: 1
+  MaxBite: 4
+  MinVision: 1
+  MaxVision: 6
+  MinAge: 30
+  MaxAge: 90
+--- !u!136 &136495132056715722
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322397003872164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.08
+  m_Height: 0.27
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.01, z: -0.02}
 --- !u!137 &137575333537326504
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

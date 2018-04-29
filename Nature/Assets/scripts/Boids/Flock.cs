@@ -1,57 +1,69 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class Flock : MonoBehaviour
+namespace Boids
 {
-    public float minSpeed = 0.5f, maxSpeed = 1.4f, rotationSpeed = 4, neighborDistance = 3;
-    private Vector3 averageHeading, averagePosition;
-    private float speed;
-
-    void Start()
+    public class Flock : MonoBehaviour
     {
-        speed = Random.Range(minSpeed, maxSpeed);
-    }
+        public int NumFishes = 20, EnvironmentSize = 6, SingleFoodSize = 310, SourcesFood = 53;
+        public static List<GameObject> FishFoods = new List<GameObject>();
+        public GameObject FishPrefab, FoodPrefab;
+        public Transform[] Sources;
+        public float SourcesRadius = 1.8f, FoodDistance = 0.8f;
+        public static List<GameObject> Fishes;
 
-    void Update()
-    {
-        if (Vector3.Distance(transform.position, Vector3.zero) >= GlobalFlock.size)
+        private bool IsInRadious(Vector3 a, Vector3 b)
         {
-            Vector3 direction = Vector3.zero - transform.position;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((direction)),
-                rotationSpeed * Time.deltaTime);
+            return Vector3.Distance(a, b) <= FoodDistance;
         }
-        else if (Random.Range(0, 5) < 1)
-            ApplyRules();
-        transform.Translate(0, 0, Time.deltaTime * speed);
-    }
 
-    void ApplyRules()
-    {
-        GameObject[] fishes = GlobalFlock.fishes;
-        Vector3 vcenter = Vector3.zero, vavoid = Vector3.zero, goalPos = GlobalFlock.goalPos;
-        float groupSpeed = 0.1f;
-        int groupSize = 0;
-
-        foreach (GameObject fish in fishes)
+        void Start()
         {
-            if (fish != gameObject)
+            Fishes = new List<GameObject>(NumFishes);
+            for (int i = 0; i < NumFishes; i++)
             {
-                float dist = Vector3.Distance(fish.transform.position, transform.position);
-                if (dist <= neighborDistance)
+                Vector3 pos = new Vector3(
+                    Random.Range(-EnvironmentSize, EnvironmentSize),
+                    Random.Range(-EnvironmentSize, EnvironmentSize),
+                    Random.Range(-EnvironmentSize, EnvironmentSize));
+                Fishes.Add(Instantiate(FishPrefab, pos, Quaternion.identity));
+            }
+
+            foreach (var source in Sources)
+            {
+                for (int j = 0; j < SourcesFood; j++)
                 {
-                    vcenter += fish.transform.position;
-                    groupSize++;
-                    if (dist < 1)
-                        vavoid += transform.position - fish.transform.position;
-                    groupSpeed += fish.GetComponent<Flock>().speed;
+                    Vector3 tmp = Random.insideUnitSphere * SourcesRadius + source.transform.position;
+                    bool alone = true;
+                    foreach (GameObject v in FishFoods)
+                        if (IsInRadious(v.transform.position, tmp))
+                        {
+                            alone = false;
+                            break;
+                        }
+
+                    if (!alone) continue;
+                    FishFoods.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
                 }
             }
+
+            for (int i = 0; i < SingleFoodSize; i++)
+            {
+                Vector3 tmp = new Vector3(
+                    Random.Range(-EnvironmentSize, EnvironmentSize),
+                    Random.Range(-EnvironmentSize, EnvironmentSize),
+                    Random.Range(-EnvironmentSize, EnvironmentSize));
+                bool alone = true;
+                foreach (GameObject v in FishFoods)
+                    if (IsInRadious(v.transform.position, tmp))
+                    {
+                        alone = false;
+                        break;
+                    }
+
+                if (!alone) continue;
+                FishFoods.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
+            }
         }
-        if (groupSize <= 0) return;
-        vcenter = vcenter / groupSize + (goalPos - transform.position);
-        speed = Mathf.Clamp(groupSpeed / groupSize, minSpeed, maxSpeed);
-        Vector3 direction = (vcenter + vavoid) - transform.position;
-        if (direction != Vector3.zero)
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
     }
 }

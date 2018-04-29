@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 18095756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: -6}
+  m_LocalPosition: {x: 0, y: -4, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   m_Layer: 0
   m_Name: Source2
   m_TagString: Untagged
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -163,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 142763632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 6, z: 0}
+  m_LocalPosition: {x: -4, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -233,8 +233,8 @@ GameObject:
   - component: {fileID: 751069695}
   - component: {fileID: 751069696}
   m_Layer: 0
-  m_Name: Manager
-  m_TagString: Untagged
+  m_Name: GameController
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751069694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.61267585, y: -0.06081462, z: -5.5873795}
+  m_LocalPosition: {x: 0, y: 16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -263,21 +263,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d4ab3799b9b4747adf8fa397651961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numFish: 20
-  environmentSize: 10
-  singleFoodSize: 80
-  sourcesFood: 24
-  fishPrefab: {fileID: 1878970585706100, guid: b5a7bc816a2629541bee222e4f652447, type: 2}
-  goalPrefab: {fileID: 1867348961013432, guid: 71bd6e5a80fc3564dac51a478b8b70ac, type: 2}
-  foodPrefabs:
-  - {fileID: 1867348961013432, guid: 71bd6e5a80fc3564dac51a478b8b70ac, type: 2}
-  - {fileID: 1682205659304388, guid: 3ba062c95fa70224aab448ef61cff37a, type: 2}
-  - {fileID: 1628669016934820, guid: 56b07f10ccba7ca4ca489927e6603af7, type: 2}
-  sources:
+  NumFishes: 20
+  EnvironmentSize: 6
+  SingleFoodSize: 0
+  SourcesFood: 20
+  FishPrefab: {fileID: 1878970585706100, guid: b5a7bc816a2629541bee222e4f652447, type: 2}
+  FoodPrefab: {fileID: 1682205659304388, guid: 3ba062c95fa70224aab448ef61cff37a, type: 2}
+  Sources:
   - {fileID: 1628382942}
   - {fileID: 142763633}
   - {fileID: 18095757}
-  sourcesRadius: 3
+  SourcesRadius: 1.6
+  FoodDistance: 0.5
 --- !u!1 &792387709
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +497,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1628382941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 6}
+  m_LocalPosition: {x: 4, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

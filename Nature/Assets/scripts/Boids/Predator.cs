@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
-public class Predator : MonoBehaviour
+namespace Boids
 {
+    public class Predator : MonoBehaviour
+    {
     
     
+    }
 }
