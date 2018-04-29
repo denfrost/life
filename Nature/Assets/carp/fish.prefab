@@ -126,7 +126,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -141,16 +141,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8340b180e2c743fab99d9411a81c61c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinSpeed: 0.5
-  MaxSpeed: 2
-  RotationSpeed: 4
-  NeighborDistance: 3
-  MinBite: 1
-  MaxBite: 4
-  MinVision: 1
-  MaxVision: 6
+  MinSpeed: 0.2
+  MaxSpeed: 3
+  RotationSpeed: 3
+  NeighborDistance: 1.6
   MinAge: 30
-  MaxAge: 90
+  MaxAge: 120
+  MinBite: 2
+  MaxBite: 4
+  MinVision: 2
+  MaxVision: 10
+  MinCapacity: 10
+  MaxCapacity: 20
+  MinMetabolism: 0.01
+  MaxMetabolism: 1
+  Inertia: 1
+  LevyChance: 4
+  Tranquility: 2.2
 --- !u!136 &136532577617853922
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -160,7 +167,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 0.71
+  m_Radius: 0.24
+  m_Height: 0.76
   m_Direction: 2
   m_Center: {x: 0, y: 0.03, z: -0.06}

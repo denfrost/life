@@ -27,7 +27,7 @@ namespace LSystems
             Quaternion.Euler(0f, 0f, 45f)
         };
 
-        void Start()
+        private void Start()
         {
             if (_depth == 0)
             {

@@ -5,11 +5,11 @@ namespace Boids
 {
     public class Flock : MonoBehaviour
     {
-        public int NumFishes = 20, EnvironmentSize = 6, SingleFoodSize = 310, SourcesFood = 53;
+        public int NumFishes = 20, SingleFoodSize = 310, SourcesFood = 53;
         public static List<GameObject> FishFoods = new List<GameObject>();
         public GameObject FishPrefab, FoodPrefab;
         public Transform[] Sources;
-        public float SourcesRadius = 1.8f, FoodDistance = 0.8f;
+        public float SourcesRadius = 1.8f, FoodDistance = 0.8f, EnvironmentSize = 6;
         public static List<GameObject> Fishes;
 
         private bool IsInRadious(Vector3 a, Vector3 b)
@@ -17,7 +17,7 @@ namespace Boids
             return Vector3.Distance(a, b) <= FoodDistance;
         }
 
-        void Start()
+        private void Start()
         {
             Fishes = new List<GameObject>(NumFishes);
             for (int i = 0; i < NumFishes; i++)
@@ -29,7 +29,7 @@ namespace Boids
                 Fishes.Add(Instantiate(FishPrefab, pos, Quaternion.identity));
             }
 
-            foreach (var source in Sources)
+            foreach (Transform source in Sources)
             {
                 for (int j = 0; j < SourcesFood; j++)
                 {
@@ -47,12 +47,14 @@ namespace Boids
                 }
             }
 
+            float aux = EnvironmentSize - 0.5f;
             for (int i = 0; i < SingleFoodSize; i++)
             {
-                Vector3 tmp = new Vector3(
-                    Random.Range(-EnvironmentSize, EnvironmentSize),
-                    Random.Range(-EnvironmentSize, EnvironmentSize),
-                    Random.Range(-EnvironmentSize, EnvironmentSize));
+                
+                Vector3 tmp = new Vector3(                    
+                    Random.Range(-aux, aux),
+                    Random.Range(-aux, aux),
+                    Random.Range(-aux, aux));
                 bool alone = true;
                 foreach (GameObject v in FishFoods)
                     if (IsInRadious(v.transform.position, tmp))
@@ -62,7 +64,8 @@ namespace Boids
                     }
 
                 if (!alone) continue;
-                FishFoods.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
+                Instantiate(FoodPrefab, tmp, Quaternion.identity);
+                //FishFoods.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
             }
         }
     }
