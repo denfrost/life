@@ -65,8 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7287e0906d7a4f9380a7670a4610932f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinEnergy: 1
-  MaxEnergy: 4
+  MinEnergy: 0.5
+  MaxEnergy: 3
   ChargeRate: 1
   ChargeDelta: 1
 --- !u!114 &114342478542765750

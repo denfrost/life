@@ -5,11 +5,11 @@ namespace Boids
 {
     public class Flock : MonoBehaviour
     {
-        public int NumFishes = 20, SingleFoodSize = 310, SourcesFood = 53;
-        public static List<GameObject> FishFoods = new List<GameObject>();
+        public int NumFishes = 30, SingleFoodSize = 44, SourcesFood = 44;
+        public static List<GameObject> FishFoods;
         public GameObject FishPrefab, FoodPrefab;
         public Transform[] Sources;
-        public float SourcesRadius = 1.8f, FoodDistance = 0.8f, EnvironmentSize = 6;
+        public float SourcesRadius = 1.2f, FoodDistance = 0.28f, EnvironmentSize = 6;
         public static List<GameObject> Fishes;
 
         private bool IsInRadious(Vector3 a, Vector3 b)
@@ -17,8 +17,9 @@ namespace Boids
             return Vector3.Distance(a, b) <= FoodDistance;
         }
 
-        private void Start()
+        private void Awake()
         {
+            FishFoods = new List<GameObject>(SourcesFood * Sources.Length);
             Fishes = new List<GameObject>(NumFishes);
             for (int i = 0; i < NumFishes; i++)
             {

@@ -144,20 +144,20 @@ MonoBehaviour:
   MinSpeed: 0.2
   MaxSpeed: 3
   RotationSpeed: 3
-  NeighborDistance: 1.6
+  NeighborDistance: 2
   MinAge: 30
   MaxAge: 120
   MinBite: 2
   MaxBite: 4
-  MinVision: 2
+  MinVision: 3
   MaxVision: 10
   MinCapacity: 10
   MaxCapacity: 20
   MinMetabolism: 0.01
   MaxMetabolism: 1
   Inertia: 1
-  LevyChance: 4
-  Tranquility: 2.2
+  LevyChance: 5
+  Stop: 0.4
 --- !u!136 &136532577617853922
 CapsuleCollider:
   m_ObjectHideFlags: 1

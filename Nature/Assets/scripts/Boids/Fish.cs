@@ -1,22 +1,20 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Boids
 {
     public class Fish : MonoBehaviour
     {
-        public float MinSpeed = 0.5f, MaxSpeed = 2f, RotationSpeed = 4, NeighborDistance = 3, MinAge = 60, MaxAge = 120;
-        public float MinBite = 1, MaxBite = 4, MinVision = 1, MaxVision = 8, MinCapacity = 4, MaxCapacity = 10;
-        public float MinMetabolism = 0.5f, MaxMetabolism = 4, Inertia = 2, LevyChance = 10, Stop = 0.3f;
+        public float MinSpeed = 0.2f, MaxSpeed = 3f, RotationSpeed = 3, NeighborDistance = 2, MinAge = 30, MaxAge = 120;
+        public float MinBite = 2, MaxBite = 4, MinVision = 3, MaxVision = 10, MinCapacity = 10, MaxCapacity = 20;
+        public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 5, Stop = 0.4f;
         private float _speed, _bite, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _energy;
         private Flock _globalFlock;
         private FishFood _lastTree;
-        private Quaternion _rotation = Quaternion.identity;
 
         void Start()
         {
-            _speed = Random.Range(MinSpeed+2, MaxSpeed);
+            _speed = Random.Range(MinSpeed + 2, MaxSpeed);
             _bite = Random.Range(MinBite, MaxBite);
             _vision = Random.Range(MinVision, MaxVision);
             _expectedLife = Random.Range(MinAge, MaxAge);
@@ -31,22 +29,17 @@ namespace Boids
             {
                 _energy = Mathf.Min(_energy + other.GetComponent<FishFood>().Eat(_bite), _capacity);
                 _lastTree = other.gameObject.GetComponent<FishFood>();
-                //Debug.Log("Hola");
+            }
+            else if (other.CompareTag("Predator"))
+            {
+                other.GetComponent<Predator>().Eat();
+                Die();
             }
         }
 
         private void FixedUpdate()
         {
-            //transform.Translate(0, 0, Time.deltaTime * _speed);             
             GetComponent<Rigidbody>().velocity = transform.forward * _speed;
-            //float e = _globalFlock.EnvironmentSize;
-            /*r.position = new Vector3 
-            (
-                Mathf.Clamp (r.position.x, -e, e), 
-                Mathf.Clamp (r.position.y, -e, e),
-                Mathf.Clamp (r.position.z, -e, e)
-            );*/
-            GetComponent<Rigidbody>().rotation = _rotation;
         }
 
         private void Update()
@@ -63,19 +56,17 @@ namespace Boids
                 if (_energy <= 0)
                     Die();
             }
+
             if (Vector3.Distance(transform.position, Vector3.zero) >= _globalFlock.EnvironmentSize)
-            {
-                Vector3 direction = -transform.position;
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((direction)),
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-transform.position),
                     RotationSpeed * Time.deltaTime);
-            }
             else if (Random.Range(0, LevyChance) < 1)
                 ApplyRules();
         }
 
         private void ApplyRules()
         {
-            Vector3 vcenter = Vector3.zero, vavoid = Vector3.zero, goalPos = Random.insideUnitSphere*4;
+            Vector3 vcenter = Vector3.zero, vavoid = Vector3.zero, goalPos = Random.insideUnitSphere * 4;
             float min = float.MaxValue;
             foreach (GameObject food in Flock.FishFoods)
             {
@@ -83,15 +74,18 @@ namespace Boids
                 if (tmp > _vision)
                     continue;
                 FishFood fishFood = food.GetComponent<FishFood>();
-                tmp -= fishFood.GetEnergy() - fishFood.GetWaste()+ Inertia;
+                tmp -= fishFood.GetEnergy() - fishFood.GetWaste() + Inertia;
                 if (tmp < min)
                 {
                     min = tmp;
                     goalPos = food.transform.position;
                 }
             }
+
             if (Vector3.Distance(transform.position, goalPos) <= Stop)
                 _speed = MinSpeed;
+            else
+                _speed = MaxSpeed - 1;
 
             float groupSpeed = _speed;
             int groupSize = 0;
@@ -106,14 +100,17 @@ namespace Boids
                         vavoid += transform.position - fish.transform.position;
                     groupSpeed += fish.GetComponent<Fish>()._speed;
                 }
-            }            
+            }
+
             vcenter /= groupSize;
             vcenter += vavoid;
             vcenter += goalPos - transform.position;
-            _speed = Mathf.Clamp(groupSpeed / groupSize, MinSpeed, MaxSpeed);            
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vcenter - transform.position), RotationSpeed * Time.deltaTime);
-            _rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vcenter - transform.position), RotationSpeed * Time.deltaTime);
-            //_rotation = Quaternion.Slerp(GetComponent<Rigidbody>().rotation, Quaternion.LookRotation(vcenter - transform.position), RotationSpeed * Time.deltaTime);
+            vcenter -= transform.position;
+            if (vcenter == Vector3.zero)
+                return;
+            _speed = Mathf.Clamp(groupSpeed / groupSize, MinSpeed, MaxSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vcenter),
+                RotationSpeed * Time.deltaTime);
         }
 
         private void Awake()
@@ -125,7 +122,6 @@ namespace Boids
         {
             Flock.Fishes.Remove(gameObject);
             Destroy(gameObject);
-            Debug.Log("Dead");
         }
     }
 }
