@@ -10,7 +10,7 @@ namespace Boids
         private float _maxSpeed, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _energy, _speed;
         private Flock _globalFlock;
 
-        void Start()
+        private void Start()
         {
             _maxSpeed = Random.Range(MinSpeed + 2, MaxSpeed);
             _speed = _maxSpeed;
@@ -18,11 +18,7 @@ namespace Boids
             _expectedLife = Random.Range(MinAge, MaxAge);
             _metabolism = Random.Range(MinMetabolism, MaxMetabolism);
             _capacity = Random.Range(MinCapacity, MaxCapacity);
-            _energy = (_capacity + MinCapacity) / 2;            
-            /*foreach (GameObject fish in Flock.Fishes)
-            {
-                Physics.IgnoreCollision(fish.GetComponent<Collider>(), GetComponent<Collider>());
-            }*/
+            _energy = (_capacity + MinCapacity) / 2;
             foreach (GameObject food in Flock.FishFoods)
             {
                 Physics.IgnoreCollision(food.GetComponent<Collider>(), GetComponent<Collider>());
@@ -41,10 +37,10 @@ namespace Boids
                 _nextAge = Time.time + 1;
                 _age += 1;
                 if (_age > _expectedLife)
-                    Destroy(gameObject);
+                    Die();
                 _energy -= _metabolism;
                 if (_energy <= 0)
-                    Destroy(gameObject);
+                    Die();
             }
 
             if (Vector3.Distance(transform.position, Vector3.zero) >= _globalFlock.EnvironmentSize)
@@ -83,13 +79,18 @@ namespace Boids
 
         public void Eat()
         {
-            _energy += KillEnergy;
-            Debug.Log("Killed");
+            _energy += KillEnergy;            
         }
 
         private void Awake()
         {
             _globalFlock = GameObject.FindGameObjectWithTag("GameController").GetComponent<Flock>();
+        }
+        
+        private void Die()
+        {
+            Flock.Predators.Remove(gameObject);
+            Destroy(gameObject);
         }
     }
 }

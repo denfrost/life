@@ -156,8 +156,9 @@ MonoBehaviour:
   MinMetabolism: 0.01
   MaxMetabolism: 1
   Inertia: 1
-  LevyChance: 5
-  Stop: 0.4
+  LevyChance: 4
+  Stop: 0.5
+  Avoid: 2
 --- !u!136 &136532577617853922
 CapsuleCollider:
   m_ObjectHideFlags: 1

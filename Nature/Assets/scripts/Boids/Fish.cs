@@ -7,7 +7,7 @@ namespace Boids
     {
         public float MinSpeed = 0.2f, MaxSpeed = 3f, RotationSpeed = 3, NeighborDistance = 2, MinAge = 30, MaxAge = 120;
         public float MinBite = 2, MaxBite = 4, MinVision = 3, MaxVision = 10, MinCapacity = 10, MaxCapacity = 20;
-        public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 5, Stop = 0.4f;
+        public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 5, Stop = 0.4f, Avoid = 2;
         private float _speed, _bite, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _energy;
         private Flock _globalFlock;
         private FishFood _lastTree;
@@ -57,7 +57,23 @@ namespace Boids
                     Die();
             }
 
-            if (Vector3.Distance(transform.position, Vector3.zero) >= _globalFlock.EnvironmentSize)
+            Vector3 vavoid = Vector3.zero;
+            bool run = false;
+            foreach (GameObject predator in Flock.Predators)
+                if (Vector3.Distance(predator.transform.position, transform.position) <= Avoid)
+                {
+                    vavoid += transform.position - predator.transform.position;
+                    run = true;
+                }
+
+            if (run)
+            {
+                _speed = MaxSpeed;
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(vavoid - transform.position),
+                    RotationSpeed * Time.deltaTime);
+            }
+            else if (Vector3.Distance(transform.position, Vector3.zero) >= _globalFlock.EnvironmentSize)
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-transform.position),
                     RotationSpeed * Time.deltaTime);
             else if (Random.Range(0, LevyChance) < 1)
@@ -66,7 +82,8 @@ namespace Boids
 
         private void ApplyRules()
         {
-            Vector3 vcenter = Vector3.zero, vavoid = Vector3.zero, goalPos = Random.insideUnitSphere * 4;
+            Vector3 vavoid = Vector3.zero;
+            Vector3 vcenter = Vector3.zero, goalPos = Random.insideUnitSphere * 4;
             float min = float.MaxValue;
             foreach (GameObject food in Flock.FishFoods)
             {

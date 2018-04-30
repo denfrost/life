@@ -5,12 +5,11 @@ namespace Boids
 {
     public class Flock : MonoBehaviour
     {
-        public int NumFishes = 30, SingleFoodSize = 44, SourcesFood = 44;
-        public static List<GameObject> FishFoods;
-        public GameObject FishPrefab, FoodPrefab;
+        public int NumFishes = 30, SingleFoodSize = 44, SourcesFood = 44, PredatorsNum = 2;
+        public static List<GameObject> FishFoods, Fishes, Predators;
+        public GameObject FishPrefab, FoodPrefab, PredatorPrefab;
         public Transform[] Sources;
-        public float SourcesRadius = 1.2f, FoodDistance = 0.28f, EnvironmentSize = 6;
-        public static List<GameObject> Fishes;
+        public float SourcesRadius = 1.2f, FoodDistance = 0.28f, EnvironmentSize = 6;        
 
         private bool IsInRadious(Vector3 a, Vector3 b)
         {
@@ -67,6 +66,16 @@ namespace Boids
                 if (!alone) continue;
                 Instantiate(FoodPrefab, tmp, Quaternion.identity);
                 //FishFoods.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
+            }
+
+            Predators = new List<GameObject>(PredatorsNum);
+            for (int i = 0; i < PredatorsNum; i++)
+            {
+                Vector3 tmp = new Vector3(                    
+                    Random.Range(-aux, aux),
+                    Random.Range(-aux, aux),
+                    Random.Range(-aux, aux));
+                Predators.Add(Instantiate(PredatorPrefab, tmp, Quaternion.identity));
             }
         }
     }
