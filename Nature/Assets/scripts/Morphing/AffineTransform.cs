@@ -16,9 +16,9 @@ namespace Morphing
             if (Time.time >= _nextTime)
             {
                 _nextTime = Time.time + rate;
-                Vector3[] vertices = GetComponent<SkinnedMeshRenderer>().sharedMesh.vertices;
-                //Vector3[] vertices = mesh.vertices;
-                Mesh mesh = new Mesh();
+                Mesh mesh= GetComponent<MeshFilter>().mesh;
+                Vector3[] vertices = mesh.vertices;
+                //Mesh mesh = new Mesh();
                 Vector3 a;
                 for (int i = 0; i < vertices.Length; i++)
                 {
@@ -30,7 +30,6 @@ namespace Morphing
                 }
                 mesh.vertices = vertices;
                 mesh.RecalculateBounds();
-                GetComponent<SkinnedMeshRenderer>().sharedMesh = mesh;
             }
         }
     }

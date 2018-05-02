@@ -6,7 +6,7 @@ namespace Boids
     public class Flock : MonoBehaviour
     {
         public int NumFishes = 30, SingleFoodSize = 44, SourcesFood = 44, PredatorsNum = 2;
-        public static List<GameObject> FishFoods, Fishes, Predators;
+        public static List<GameObject> FishFoods, Fishes, Predators, Trash;
         public GameObject FishPrefab, FoodPrefab, PredatorPrefab;
         public Transform[] Sources;
         public float SourcesRadius = 1.2f, FoodDistance = 0.28f, EnvironmentSize = 6;        
@@ -20,6 +20,7 @@ namespace Boids
         {
             FishFoods = new List<GameObject>(SourcesFood * Sources.Length);
             Fishes = new List<GameObject>(NumFishes);
+            Trash = new List<GameObject>(SingleFoodSize);
             for (int i = 0; i < NumFishes; i++)
             {
                 Vector3 pos = new Vector3(
@@ -64,8 +65,8 @@ namespace Boids
                     }
 
                 if (!alone) continue;
-                Instantiate(FoodPrefab, tmp, Quaternion.identity);
-                //FishFoods.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
+                //Instantiate(FoodPrefab, tmp, Quaternion.identity);
+                Trash.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
             }
 
             Predators = new List<GameObject>(PredatorsNum);

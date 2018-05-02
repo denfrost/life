@@ -9,6 +9,7 @@ namespace TuringPattern
 
         public int steps = 100;
         public float alpha = -0.005f, beta = 10f, dx = 1, dt = 0.001f, da = 1, db = 100;
+        public bool IsAnimated = true;
 
         private Texture2D _texture;
         private float[,] _activator, _inhibitor;
@@ -23,11 +24,18 @@ namespace TuringPattern
             //texture.filterMode = FilterMode.Trilinear;
             //texture.anisoLevel = 9;
             //GetComponent<MeshRenderer>().material.mainTexture = texture;
-            GetComponent<SkinnedMeshRenderer>().material.mainTexture = _texture;
+            if (IsAnimated)
+                GetComponent<SkinnedMeshRenderer>().material.mainTexture = _texture;
+            else
+                GetComponent<MeshRenderer>().material.mainTexture = _texture;
             //FillTexture();
             InitalizeMorphogens();
-            inhibitorObject.GetComponent<MeshRenderer>().material.mainTexture =
-                new Texture2D(resolution, resolution, TextureFormat.RGB24, true);
+            if (IsAnimated)
+                inhibitorObject.GetComponent<SkinnedMeshRenderer>().material.mainTexture =
+                    new Texture2D(resolution, resolution, TextureFormat.RGB24, true);
+            else
+                inhibitorObject.GetComponent<MeshRenderer>().material.mainTexture =
+                    new Texture2D(resolution, resolution, TextureFormat.RGB24, true);
         }
 
         private void InitalizeMorphogens()
@@ -93,7 +101,11 @@ namespace TuringPattern
 
             _activator = tmpA;
             _inhibitor = tmpB;
-            Texture2D texture2D = ((Texture2D) inhibitorObject.GetComponent<MeshRenderer>().material.mainTexture);
+            Texture2D texture2D;
+            if(IsAnimated)
+                texture2D = (Texture2D) inhibitorObject.GetComponent<SkinnedMeshRenderer>().material.mainTexture;
+            else
+                texture2D = (Texture2D) inhibitorObject.GetComponent<MeshRenderer>().material.mainTexture;
             for (int i = 0; i < resolution; i++)
             {
                 for (int j = 0; j < resolution; j++)

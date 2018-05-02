@@ -23,6 +23,10 @@ namespace Boids
             {
                 Physics.IgnoreCollision(food.GetComponent<Collider>(), GetComponent<Collider>());
             }
+            foreach (GameObject food in Flock.Trash)
+            {
+                Physics.IgnoreCollision(food.GetComponent<Collider>(), GetComponent<Collider>());
+            }
         }
         
         private void FixedUpdate()

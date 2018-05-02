@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumFishes: 30
-  SingleFoodSize: 0
+  SingleFoodSize: 40
   SourcesFood: 44
   PredatorsNum: 2
   FishPrefab: {fileID: 1878970585706100, guid: b5a7bc816a2629541bee222e4f652447, type: 2}

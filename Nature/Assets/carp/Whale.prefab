@@ -846,8 +846,8 @@ MonoBehaviour:
   MinSpeed: 0.2
   MaxSpeed: 4
   RotationSpeed: 3
-  MinAge: 120
-  MaxAge: 240
+  MinAge: 100
+  MaxAge: 220
   MinVision: 10
   MaxVision: 10
   MinCapacity: 10
