@@ -4,7 +4,7 @@ namespace Boids
 {
     public class Predator : MonoBehaviour
     {
-        public float MinSpeed = 0.2f, MaxSpeed = 3f, RotationSpeed = 3, MinAge = 30, MaxAge = 120;
+        public float MinSpeed = 0.2f, MaxSpeed = 3f, RotationSpeed = 0.14f, MinAge = 30, MaxAge = 120;
         public float MinVision = 3, MaxVision = 10, MinCapacity = 10, MaxCapacity = 20, KillEnergy = 10;
         public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 5;
         private float _maxSpeed, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _energy, _speed;
@@ -49,7 +49,7 @@ namespace Boids
 
             if (Vector3.Distance(transform.position, Vector3.zero) >= _globalFlock.EnvironmentSize)
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-transform.position),
-                    RotationSpeed * Time.deltaTime);
+                    RotationSpeed);
             else if (_energy > _capacity)
                 _speed = MinSpeed;
             else if (Random.Range(0, LevyChance) < 1)
@@ -78,7 +78,7 @@ namespace Boids
             if (goalPos == Vector3.zero)
                 return;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(goalPos),
-                RotationSpeed * Time.deltaTime);            
+                RotationSpeed);            
         }
 
         public void Eat()

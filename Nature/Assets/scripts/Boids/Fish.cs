@@ -12,7 +12,7 @@ namespace Boids
         private Flock _globalFlock;
         private FishFood _lastTree;
 
-        void Start()
+        private void Start()
         {
             _speed = Random.Range(MinSpeed + 2, MaxSpeed);
             _bite = Random.Range(MinBite, MaxBite);
@@ -71,11 +71,11 @@ namespace Boids
                 _speed = MaxSpeed;
                 transform.rotation = Quaternion.Slerp(transform.rotation,
                     Quaternion.LookRotation(vavoid - transform.position),
-                    RotationSpeed * Time.deltaTime);
+                    RotationSpeed);
             }
             else if (Vector3.Distance(transform.position, Vector3.zero) >= _globalFlock.EnvironmentSize)
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-transform.position),
-                    RotationSpeed * Time.deltaTime);
+                    RotationSpeed);
             else if (Random.Range(0, LevyChance) < 1)
                 ApplyRules();
         }
@@ -87,6 +87,7 @@ namespace Boids
             float min = float.MaxValue;
             foreach (GameObject food in Flock.FishFoods)
             {
+                if (!food.activeSelf) continue;
                 float tmp = Vector3.Distance(transform.position, food.transform.position);
                 if (tmp > _vision)
                     continue;
@@ -127,7 +128,7 @@ namespace Boids
                 return;
             _speed = Mathf.Clamp(groupSpeed / groupSize, MinSpeed, MaxSpeed);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vcenter),
-                RotationSpeed * Time.deltaTime);
+                RotationSpeed);
         }
 
         private void Awake()
