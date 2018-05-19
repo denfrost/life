@@ -212,10 +212,10 @@ MonoBehaviour:
   NumFishes: 30
   SingleFoodSize: 10
   SourcesFood: 44
-  PredatorsNum: 0
-  FishPrefab: {fileID: 1878970585706100, guid: b5a7bc816a2629541bee222e4f652447, type: 2}
-  FoodPrefab: {fileID: 1682205659304388, guid: 3ba062c95fa70224aab448ef61cff37a, type: 2}
-  PredatorPrefab: {fileID: 1231395892687908, guid: e34b4101df2151345ae97dd505c8eb20,
+  PredatorsNum: 2
+  FishPrefab: {fileID: 1379967891346518, guid: 8345f1d13caebc240bdb9fe641021137, type: 2}
+  FoodPrefab: {fileID: 1109183245217298, guid: d0af188b95bbd8442826de3c0c06b2f6, type: 2}
+  PredatorPrefab: {fileID: 1923653744021510, guid: 57d6b2636a435d34ca44df6bdaa6096a,
     type: 2}
   SourcesTransforms:
   - {fileID: 1628382942}

@@ -8,20 +8,20 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1682205659304388}
-  m_IsPrefabAsset: 1
---- !u!1 &1682205659304388
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1109183245217298}
+  m_IsPrefabParent: 1
+--- !u!1 &1109183245217298
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
+  serializedVersion: 5
   m_Component:
-  - component: {fileID: 4619884398624560}
-  - component: {fileID: 114342478542765750}
-  - component: {fileID: 65082382034599590}
-  - component: {fileID: 114326742984606178}
+  - component: {fileID: 4901433782719336}
+  - component: {fileID: 114813966094784714}
+  - component: {fileID: 65072201784552868}
+  - component: {fileID: 114446600987258484}
   m_Layer: 0
   m_Name: FractalBinaryTree
   m_TagString: Tree
@@ -29,12 +29,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4619884398624560
+--- !u!4 &4901433782719336
 Transform:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682205659304388}
+  m_GameObject: {fileID: 1109183245217298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.024, y: 0.024, z: 0.024}
@@ -42,24 +42,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65082382034599590
+--- !u!65 &65072201784552868
 BoxCollider:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682205659304388}
+  m_GameObject: {fileID: 1109183245217298}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 12, y: 12, z: 3}
   m_Center: {x: 0.000000059604645, y: 4.5, z: -0.00000008940697}
---- !u!114 &114326742984606178
+--- !u!114 &114446600987258484
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682205659304388}
+  m_GameObject: {fileID: 1109183245217298}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7287e0906d7a4f9380a7670a4610932f, type: 3}
@@ -69,12 +69,12 @@ MonoBehaviour:
   MaxEnergy: 3
   ChargeRate: 1
   ChargeDelta: 1
---- !u!114 &114342478542765750
+--- !u!114 &114813966094784714
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682205659304388}
+  m_GameObject: {fileID: 1109183245217298}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f1b68014e7844b91b6b05788f1f756f, type: 3}
