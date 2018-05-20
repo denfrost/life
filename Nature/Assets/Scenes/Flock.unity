@@ -212,7 +212,7 @@ MonoBehaviour:
   NumFishes: 30
   SingleFoodSize: 10
   SourcesFood: 44
-  PredatorsNum: 2
+  PredatorsNum: 4
   FishPrefab: {fileID: 1379967891346518, guid: 8345f1d13caebc240bdb9fe641021137, type: 2}
   FoodPrefab: {fileID: 1109183245217298, guid: d0af188b95bbd8442826de3c0c06b2f6, type: 2}
   PredatorPrefab: {fileID: 1923653744021510, guid: 57d6b2636a435d34ca44df6bdaa6096a,
@@ -226,7 +226,7 @@ MonoBehaviour:
   - {fileID: 1990192442}
   SourcesRadius: 1.2
   FoodDistance: 0.28
-  EnvironmentSize: 6
+  EnvironmentSize: 7
   SeasonRate: 10
   SourceChance: 0.3
 --- !u!1 &849412794
@@ -432,7 +432,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -549,7 +549,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1628382941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

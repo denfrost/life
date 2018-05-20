@@ -26,12 +26,13 @@ namespace Boids
             FishFoods = new List<GameObject>(SourcesFood * SourcesTransforms.Length);
             Fishes = new List<GameObject>(NumFishes);
             Trash = new List<GameObject>(SingleFoodSize);
+            float aux = EnvironmentSize - 1.5f;
             for (int i = 0; i < NumFishes; i++)
             {
                 Vector3 pos = new Vector3(
-                    Random.Range(-EnvironmentSize, EnvironmentSize),
-                    Random.Range(-EnvironmentSize, EnvironmentSize),
-                    Random.Range(-EnvironmentSize, EnvironmentSize));
+                    Random.Range(-aux, aux),
+                    Random.Range(-aux, aux),
+                    Random.Range(-aux, aux));
                 Fishes.Add(Instantiate(FishPrefab, pos, Quaternion.identity));
             }
 
@@ -62,13 +63,13 @@ namespace Boids
                 c++;
             }
 
-            float aux = EnvironmentSize - 0.5f;
+            float aux1 = EnvironmentSize - 0.5f;
             for (int i = 0; i < SingleFoodSize; i++)
             {
                 Vector3 tmp = new Vector3(
-                    Random.Range(-aux, aux),
-                    Random.Range(-aux, aux),
-                    Random.Range(-aux, aux));
+                    Random.Range(-aux1, aux1),
+                    Random.Range(-aux1, aux1),
+                    Random.Range(-aux1, aux1));
                 bool alone = true;
                 foreach (GameObject v in FishFoods)
                     if (IsInRadious(v.transform.position, tmp))
@@ -77,18 +78,18 @@ namespace Boids
                         break;
                     }
 
-                if (!alone) continue;
-                //Instantiate(FoodPrefab, tmp, Quaternion.identity);
-                Trash.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
+                if (alone)
+                    Trash.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
             }
 
             Predators = new List<GameObject>(PredatorsNum);
+            aux1 -= 0.5f;
             for (int i = 0; i < PredatorsNum; i++)
             {
                 Vector3 tmp = new Vector3(
-                    Random.Range(-aux, aux),
-                    Random.Range(-aux, aux),
-                    Random.Range(-aux, aux));
+                    Random.Range(-aux1, aux1),
+                    Random.Range(-aux1, aux1),
+                    Random.Range(-aux1, aux1));
                 Predators.Add(Instantiate(PredatorPrefab, tmp, Quaternion.identity));
             }
         }

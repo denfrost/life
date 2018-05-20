@@ -846,15 +846,15 @@ MonoBehaviour:
   MinSpeed: 0.2
   MaxSpeed: 4
   RotationSpeed: 0.14
-  MinAge: 100
-  MaxAge: 220
+  MinAge: 1000
+  MaxAge: 2200
   MinVision: 10
   MaxVision: 10
-  MinCapacity: 10
-  MaxCapacity: 20
-  KillEnergy: 5
-  MinMetabolism: 0.01
-  MaxMetabolism: 0.5
+  MinCapacity: 8
+  MaxCapacity: 14
+  KillEnergy: 4
+  MinMetabolism: 0.05
+  MaxMetabolism: 1
   Inertia: 1
   LevyChance: 3
 --- !u!136 &136891182202725518

@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 4380147710543092}
   - component: {fileID: 33643039023223252}
   - component: {fileID: 23869779735247222}
+  - component: {fileID: 114364388904960150}
   m_Layer: 0
   m_Name: cruscarp
   m_TagString: Untagged
@@ -144,21 +145,76 @@ MonoBehaviour:
   MinSpeed: 0.2
   MaxSpeed: 3
   RotationSpeed: 0.12
-  NeighborDistance: 2
+  NeighborDistance: 2.4
   MinAge: 30
-  MaxAge: 120
+  MaxAge: 50
   MinBite: 2
   MaxBite: 4
   MinVision: 3
   MaxVision: 10
-  MinCapacity: 10
-  MaxCapacity: 20
-  MinMetabolism: 0.01
+  MinCapacity: 8
+  MaxCapacity: 14
+  MinMetabolism: 0.1
   MaxMetabolism: 1
   Inertia: 1
   LevyChance: 3
   Stop: 0.5
   Avoid: 2
+  DeltaScale: 0.44
+  NeighborAvoidance: 0.5
+  MinReproductionRate: 8
+  MaxReproductionRate: 10
+  ReproductionAge: 15
+--- !u!114 &114364388904960150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910420142530486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc079907df5444dd9131724fad3fec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Resolution: 40
+  Coloring:
+    serializedVersion: 2
+    key0: {r: 0.75711995, g: 0.8217743, b: 0.8867924, a: 1}
+    key1: {r: 0.087931626, g: 0.20211628, b: 0.9811321, a: 1}
+    key2: {r: 0.084905684, g: 0.0060074767, b: 0.0060074767, a: 0}
+    key3: {r: 0.084905684, g: 0.0060074767, b: 0.0060074767, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 33924
+    ctime2: 65535
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+  Steps: 100
+  Alpha: -0.005
+  Beta: 10
+  Dx: 3.2
+  Dt: 0.001
+  Da: 1
+  Db: 100
+  UpdateRate: 1
+  IsAnimated: 0
 --- !u!136 &136349350238216602
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -8,16 +8,24 @@ namespace TuringPattern
         public Gradient Coloring;
 
         public int Steps = 100;
-        public float Alpha = -0.005f, Beta = 10f, Dx = 1, Dt = 0.001f, Da = 1, Db = 100;
+        public float Alpha = -0.005f, Beta = 10f, Dx = 1, Dt = 0.001f, Da = 1, Db = 100, UpdateRate = 1.0f;
         public bool IsAnimated = true;
 
         private Texture2D _texture;
         private float[,] _activator, _inhibitor;
         private int _c;
+        private bool _isFirst = true;
+        private float _nextTime;
 
         private void Awake()
         {
-            _texture = new Texture2D(Resolution, Resolution, TextureFormat.RGB24, true) {name = "InhivatorActivator"};
+            if (Time.time > 2.0f)
+                _isFirst = false;
+            if (_isFirst) return;
+            _texture = new Texture2D(Resolution, Resolution, TextureFormat.RGB24, true)
+            {
+                name = "InhivatorActivator"
+            };
 
             if (IsAnimated)
                 GetComponent<SkinnedMeshRenderer>().material.mainTexture = _texture;
@@ -68,19 +76,19 @@ namespace TuringPattern
 
         private void Update()
         {
-            if (_c >= Steps) return;
+            if (_isFirst || _c >= Steps || Time.time < _nextTime) return;
             float[,] tmpA = new float[Resolution, Resolution];
             float[,] tmpB = new float[Resolution, Resolution];
             for (int i = 0; i < Resolution; i++)
-                for (int j = 0; j < Resolution; j++)
-                {
-                    tmpA[i, j] = _activator[i, j] +
-                                 Dt * (Da * Laplacian(i, j, _activator) +
-                                       FitzNagumoA(_activator[i, j], _inhibitor[i, j]));
-                    tmpB[i, j] = _inhibitor[i, j] +
-                                 Dt * (Db * Laplacian(i, j, _inhibitor) +
-                                       FitzNagumoB(_activator[i, j], _inhibitor[i, j]));
-                }            
+            for (int j = 0; j < Resolution; j++)
+            {
+                tmpA[i, j] = _activator[i, j] +
+                             Dt * (Da * Laplacian(i, j, _activator) +
+                                   FitzNagumoA(_activator[i, j], _inhibitor[i, j]));
+                tmpB[i, j] = _inhibitor[i, j] +
+                             Dt * (Db * Laplacian(i, j, _inhibitor) +
+                                   FitzNagumoB(_activator[i, j], _inhibitor[i, j]));
+            }
 
             _activator = tmpA;
             _inhibitor = tmpB;
@@ -90,6 +98,7 @@ namespace TuringPattern
 
             _texture.Apply();
             _c++;
+            _nextTime += UpdateRate;
         }
 
         private float FitzNagumoA(float a, float b)

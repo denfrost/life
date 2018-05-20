@@ -18,15 +18,15 @@ namespace Boids
             _expectedLife = Random.Range(MinAge, MaxAge);
             _metabolism = Random.Range(MinMetabolism, MaxMetabolism);
             _capacity = Random.Range(MinCapacity, MaxCapacity);
-            _energy = (_capacity + MinCapacity) / 2;
-            foreach (GameObject food in Flock.FishFoods)
-            {
+            _energy = MinCapacity;
+            foreach (GameObject food in Flock.FishFoods)            
                 Physics.IgnoreCollision(food.GetComponent<Collider>(), GetComponent<Collider>());
-            }
+            
             foreach (GameObject food in Flock.Trash)
-            {
                 Physics.IgnoreCollision(food.GetComponent<Collider>(), GetComponent<Collider>());
-            }
+            
+            foreach (GameObject food in Flock.Predators)
+                Physics.IgnoreCollision(food.GetComponent<Collider>(), GetComponent<Collider>());
         }
         
         private void FixedUpdate()

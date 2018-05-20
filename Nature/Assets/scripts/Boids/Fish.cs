@@ -8,9 +8,15 @@ namespace Boids
         public float MinSpeed = 0.2f, MaxSpeed = 3f, RotationSpeed = 3, NeighborDistance = 2, MinAge = 30, MaxAge = 120;
         public float MinBite = 2, MaxBite = 4, MinVision = 3, MaxVision = 10, MinCapacity = 10, MaxCapacity = 20;
         public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 5, Stop = 0.4f, Avoid = 2;
+        public float DeltaScale = 0.4f, NeighborAvoidance = 0.8f, MinReproductionRate = 3.0f, MaxReproductionRate = 5.0f;
+        public float ReproductionAge = 10;
+        
         private float _speed, _bite, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _energy;
+        private float _reproductionRate, _nextReproduction;
         private Flock _globalFlock;
         private FishFood _lastTree;
+        private const float GenreRatio = 0.5f;
+        private bool _isMale;
 
         private void Start()
         {
@@ -21,6 +27,13 @@ namespace Boids
             _metabolism = Random.Range(MinMetabolism, MaxMetabolism);
             _capacity = Random.Range(MinCapacity, MaxCapacity);
             _energy = (_capacity + MinCapacity) / 2;
+            transform.localScale = new Vector3(
+                1.0f - Random.Range(-DeltaScale, DeltaScale),
+                1.0f - Random.Range(-DeltaScale, DeltaScale),
+                1.0f - Random.Range(-DeltaScale, DeltaScale));
+            _isMale = Random.value >= GenreRatio;
+            _reproductionRate = Random.Range(MinReproductionRate, MaxReproductionRate);
+            _nextReproduction = Time.time + ReproductionAge;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -35,7 +48,16 @@ namespace Boids
                 other.GetComponent<Predator>().Eat();
                 Die();
             }
-        }
+            else if (!_isMale && other.CompareTag("Fish"))
+            {
+                if (other.gameObject.GetComponent<Fish>()._isMale == _isMale || Time.time < _nextReproduction || 
+                    Time.time < other.gameObject.GetComponent<Fish>()._nextReproduction) 
+                    return;
+                Reproduce();
+                other.gameObject.GetComponent<Fish>().UpdateNexReproduction();
+                UpdateNexReproduction();
+            }
+        }       
 
         private void FixedUpdate()
         {
@@ -82,8 +104,26 @@ namespace Boids
 
         private void ApplyRules()
         {
-            Vector3 vavoid = Vector3.zero;
-            Vector3 vcenter = Vector3.zero, goalPos = Random.insideUnitSphere * 4;
+            Vector3 vavoid = Vector3.zero, vcenter = Vector3.zero;            
+            float groupSpeed = 0;
+            int groupSize = 0;
+            foreach (GameObject fish in Flock.Fishes)
+            {
+                float dist = Vector3.Distance(fish.transform.position, transform.position);
+                if (dist <= NeighborDistance)
+                {
+                    vcenter += fish.transform.position;                    
+                    groupSize++;
+                    if (dist <= NeighborAvoidance && dist > 0)
+                        vavoid += transform.position - fish.transform.position;
+                    groupSpeed += fish.GetComponent<Fish>()._speed;
+                }
+            }
+
+            vcenter /= groupSize;
+            vcenter += vavoid;
+            Vector3 goalPos = vcenter;
+            
             float min = float.MaxValue;
             foreach (GameObject food in Flock.FishFoods)
             {
@@ -104,31 +144,13 @@ namespace Boids
                 _speed = MinSpeed;
             else
                 _speed = MaxSpeed - 1;
-
-            float groupSpeed = _speed;
-            int groupSize = 0;
-            foreach (GameObject fish in Flock.Fishes)
-            {
-                float dist = Vector3.Distance(fish.transform.position, transform.position);
-                if (dist <= NeighborDistance)
-                {
-                    vcenter += fish.transform.position;
-                    groupSize++;
-                    if (dist < 1.2f && dist > 0)
-                        vavoid += transform.position - fish.transform.position;
-                    groupSpeed += fish.GetComponent<Fish>()._speed;
-                }
-            }
-
-            vcenter /= groupSize;
-            vcenter += vavoid;
+            
+            groupSpeed += _speed;
             vcenter += goalPos - transform.position;
             vcenter -= transform.position;
-            if (vcenter == Vector3.zero)
-                return;
+            if (vcenter == Vector3.zero) return;
             _speed = Mathf.Clamp(groupSpeed / groupSize, MinSpeed, MaxSpeed);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vcenter),
-                RotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vcenter), RotationSpeed);            
         }
 
         private void Awake()
@@ -140,6 +162,18 @@ namespace Boids
         {
             Flock.Fishes.Remove(gameObject);
             Destroy(gameObject);
+        }
+
+        private void Reproduce()
+        {
+            float aux = _globalFlock.EnvironmentSize - 2;
+            Vector3 pos = Random.insideUnitSphere * aux;
+            Flock.Fishes.Add(Instantiate(_globalFlock.FishPrefab, pos, Quaternion.identity));
+        }
+        
+        private void UpdateNexReproduction()
+        {
+            _nextReproduction = Time.deltaTime + _reproductionRate;
         }
     }
 }
