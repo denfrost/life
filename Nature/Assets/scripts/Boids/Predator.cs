@@ -50,7 +50,7 @@ namespace Boids
             if (Vector3.Distance(transform.position, Vector3.zero) >= _globalFlock.EnvironmentSize)
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-transform.position),
                     RotationSpeed);
-            else if (_energy > _capacity)
+            else if (_energy >= _capacity)
                 _speed = MinSpeed;
             else if (Random.Range(0, LevyChance) < 1)
                 ApplyRules();

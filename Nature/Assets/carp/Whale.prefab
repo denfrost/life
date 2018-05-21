@@ -844,17 +844,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinSpeed: 0.2
-  MaxSpeed: 4
+  MaxSpeed: 4.2
   RotationSpeed: 0.14
   MinAge: 1000
   MaxAge: 2200
   MinVision: 10
   MaxVision: 10
-  MinCapacity: 8
-  MaxCapacity: 14
+  MinCapacity: 15
+  MaxCapacity: 15
   KillEnergy: 4
   MinMetabolism: 0.05
-  MaxMetabolism: 1
+  MaxMetabolism: 0.8
   Inertia: 1
   LevyChance: 3
 --- !u!136 &136891182202725518

@@ -146,25 +146,26 @@ MonoBehaviour:
   MaxSpeed: 3
   RotationSpeed: 0.12
   NeighborDistance: 2.4
-  MinAge: 30
-  MaxAge: 50
   MinBite: 2
   MaxBite: 4
   MinVision: 3
   MaxVision: 10
   MinCapacity: 8
   MaxCapacity: 14
-  MinMetabolism: 0.1
-  MaxMetabolism: 1
+  MinMetabolism: 0.2
+  MaxMetabolism: 0.9
   Inertia: 1
   LevyChance: 3
   Stop: 0.5
-  Avoid: 2
   DeltaScale: 0.44
-  NeighborAvoidance: 0.5
   MinReproductionRate: 8
   MaxReproductionRate: 10
+  ScapeDistance: 2
   ReproductionAge: 15
+  MutationFactor: 0.5
+  NeighborAvoidance: 0.5
+  MinAge: 30
+  MaxAge: 60
 --- !u!114 &114364388904960150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,7 +207,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  Steps: 100
+  Steps: 80
   Alpha: -0.005
   Beta: 10
   Dx: 3.2
