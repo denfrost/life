@@ -35,6 +35,17 @@ namespace Boids
                     Random.Range(-aux, aux));
                 Fishes.Add(Instantiate(FishPrefab, pos, Quaternion.identity));
             }
+            
+            Predators = new List<GameObject>(PredatorsNum);
+            float aux1 = EnvironmentSize - 1f;
+            for (int i = 0; i < PredatorsNum; i++)
+            {
+                Vector3 tmp = new Vector3(
+                    Random.Range(-aux1, aux1),
+                    Random.Range(-aux1, aux1),
+                    Random.Range(-aux1, aux1));
+                Predators.Add(Instantiate(PredatorPrefab, tmp, Quaternion.identity));
+            }
 
             int c = 0;
             foreach (Transform source in SourcesTransforms)
@@ -63,7 +74,7 @@ namespace Boids
                 c++;
             }
 
-            float aux1 = EnvironmentSize - 0.5f;
+            aux1 = EnvironmentSize - 0.5f;
             for (int i = 0; i < SingleFoodSize; i++)
             {
                 Vector3 tmp = new Vector3(
@@ -80,17 +91,6 @@ namespace Boids
 
                 if (alone)
                     Trash.Add(Instantiate(FoodPrefab, tmp, Quaternion.identity));
-            }
-
-            Predators = new List<GameObject>(PredatorsNum);
-            aux1 -= 0.5f;
-            for (int i = 0; i < PredatorsNum; i++)
-            {
-                Vector3 tmp = new Vector3(
-                    Random.Range(-aux1, aux1),
-                    Random.Range(-aux1, aux1),
-                    Random.Range(-aux1, aux1));
-                Predators.Add(Instantiate(PredatorPrefab, tmp, Quaternion.identity));
             }
         }
 

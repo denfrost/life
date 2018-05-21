@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TuringPattern;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Boids
@@ -41,7 +42,7 @@ namespace Boids
         }
         
         private void Inherit(float bite, float vision, float expectedLife, float capacity, float metabolism,
-            float reproductionRate, float energy, Vector3 transformation)
+            float reproductionRate, float energy, Vector3 transformation, float alpha)
         {
             float mutation = Random.Range(1 - MutationFactor, 1 + MutationFactor);
             _bite = bite * mutation;
@@ -53,6 +54,7 @@ namespace Boids
             _energy = energy * mutation;
             _transform = transformation * mutation;
             transform.localScale = _transform;
+            transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().SetAlpha(alpha * mutation);
         }
         
         private void Reproduce(Fish other)
@@ -71,7 +73,9 @@ namespace Boids
                 Random.value >= 0.5f ? _metabolism : other._metabolism,
                 Random.value >= 0.5f ? _reproductionRate : other._reproductionRate,
                 _energy + other._energy,
-                Random.value >= 0.5f ? _transform : other._transform
+                Random.value >= 0.5f ? _transform : other._transform,
+                Random.value >= 0.5f ? transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha() : 
+                    other.transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha()
                 );
         }
 

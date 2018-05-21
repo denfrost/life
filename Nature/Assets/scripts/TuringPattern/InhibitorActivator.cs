@@ -8,18 +8,30 @@ namespace TuringPattern
         public Gradient Coloring;
 
         public int Steps = 100;
-        public float Alpha = -0.005f, Beta = 10f, Dx = 1, Dt = 0.001f, Da = 1, Db = 100, UpdateRate = 1.0f;
+        public float Beta = 10f, Dx = 1, Dt = 0.001f, Da = 1, Db = 100, UpdateRate = 1f;
+        public float MinAlpha = -5f, MaxAlpha = 5f;
         public bool IsAnimated = true;
 
         private Texture2D _texture;
         private float[,] _activator, _inhibitor;
         private int _c;
         private bool _isFirst = true;
-        private float _nextTime;
+        private float _nextTime, _alpha;
+
+        public void SetAlpha(float alpha)
+        {
+            _alpha = alpha;
+        }
+        
+        public float GetAlpha()
+        {
+            return _alpha;
+        }
 
         private void Awake()
         {
-            if (Time.time > 2.0f)
+            _alpha = Random.Range(MinAlpha, MaxAlpha);
+            if (Time.time >= 2f)
                 _isFirst = false;
             if (_isFirst) return;
             _texture = new Texture2D(Resolution, Resolution, TextureFormat.RGB24, true)
@@ -77,6 +89,7 @@ namespace TuringPattern
         private void Update()
         {
             if (_isFirst || _c >= Steps || Time.time < _nextTime) return;
+            //if (_c >= Steps) return;
             float[,] tmpA = new float[Resolution, Resolution];
             float[,] tmpB = new float[Resolution, Resolution];
             for (int i = 0; i < Resolution; i++)
@@ -103,7 +116,7 @@ namespace TuringPattern
 
         private float FitzNagumoA(float a, float b)
         {
-            return a - Mathf.Pow(a, 3) - b + Alpha;
+            return a - Mathf.Pow(a, 3) - b + _alpha;
         }
 
         private float FitzNagumoB(float a, float b)

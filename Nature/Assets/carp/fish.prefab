@@ -207,14 +207,15 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  Steps: 80
-  Alpha: -0.005
+  Steps: 70
   Beta: 10
-  Dx: 3.2
+  Dx: 50
   Dt: 0.001
   Da: 1
   Db: 100
-  UpdateRate: 1
+  UpdateRate: 0.5
+  MinAlpha: -5
+  MaxAlpha: 5
   IsAnimated: 0
 --- !u!136 &136349350238216602
 CapsuleCollider:
