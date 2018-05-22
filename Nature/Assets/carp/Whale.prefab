@@ -853,8 +853,8 @@ MonoBehaviour:
   MinCapacity: 15
   MaxCapacity: 15
   KillEnergy: 4
-  MinMetabolism: 0.05
-  MaxMetabolism: 0.8
+  MinMetabolism: 0.2
+  MaxMetabolism: 0.6
   Inertia: 1
   LevyChance: 3
 --- !u!136 &136891182202725518
