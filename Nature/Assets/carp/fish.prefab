@@ -153,19 +153,21 @@ MonoBehaviour:
   MinCapacity: 8
   MaxCapacity: 14
   MinMetabolism: 0.2
-  MaxMetabolism: 0.9
+  MaxMetabolism: 0.8
   Inertia: 1
   LevyChance: 3
   Stop: 0.5
   DeltaScale: 0.44
-  MinReproductionRate: 8
-  MaxReproductionRate: 10
+  MinReproductionRate: 6.5
+  MaxReproductionRate: 8.5
   ScapeDistance: 2
-  ReproductionAge: 15
+  ReproductionAge: 14
   MutationFactor: 0.5
   NeighborAvoidance: 0.5
-  MinAge: 30
-  MaxAge: 60
+  MinAge: 40
+  MaxAge: 62
+  MaxTDifference: 0.6
+  MaxSDifference: 2
 --- !u!114 &114364388904960150
 MonoBehaviour:
   m_ObjectHideFlags: 1

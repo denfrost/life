@@ -209,10 +209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d4ab3799b9b4747adf8fa397651961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumFishes: 30
-  SingleFoodSize: 10
+  NumFishes: 40
+  SingleFoodSize: 14
   SourcesFood: 44
-  PredatorsNum: 4
+  PredatorsNum: 3
   FishPrefab: {fileID: 1379967891346518, guid: 8345f1d13caebc240bdb9fe641021137, type: 2}
   FoodPrefab: {fileID: 1109183245217298, guid: d0af188b95bbd8442826de3c0c06b2f6, type: 2}
   PredatorPrefab: {fileID: 1923653744021510, guid: 57d6b2636a435d34ca44df6bdaa6096a,

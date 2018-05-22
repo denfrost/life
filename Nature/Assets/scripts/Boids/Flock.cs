@@ -99,11 +99,14 @@ namespace Boids
             if (Time.time >= _nextSeason)
             {
                 _nextSeason = Time.time + SeasonRate;
+                int a = Mathf.RoundToInt(Random.Range(0, _soureces.Count + 0.49f));
+                int i = 0;
                 foreach (List<GameObject> l in _soureces)
                 {
-                    bool active = Random.value <= SourceChance;
+                    bool active = Random.value <= SourceChance || a == i;
                     foreach (GameObject plant in l)
                         plant.SetActive(active);
+                    i++;
                 }
             }
         }
