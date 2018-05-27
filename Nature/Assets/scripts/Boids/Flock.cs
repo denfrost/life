@@ -10,7 +10,7 @@ namespace Boids
         public GameObject FishPrefab, FoodPrefab, PredatorPrefab;
         public Transform[] SourcesTransforms;
         public float SourcesRadius = 1.2f, FoodDistance = 0.28f, EnvironmentSize = 6, SeasonRate = 10f;
-        public float SourceChance = 0.4f, AppearanceTime = 10f, MatingSeason = 12f, MatingDuration = 4f;
+        public float SourceChance = 0.4f, AppearanceTime = 10f, MatingSeason = 36f, MatingDuration = 4f;
         private List<List<GameObject>> _soureces;
         private float _nextSeason, _nextMating;
         private bool _predators = true, _matingSeason;
@@ -103,6 +103,9 @@ namespace Boids
                 }
             }
 
+            if (!_predators && Predator.WhalesAlive < 2)
+                Predators.Add(Instantiate(PredatorPrefab, Vector3.zero, Quaternion.identity));
+            
             if (_predators && Time.time >= AppearanceTime)
             {
                 _predators = false;
@@ -115,10 +118,7 @@ namespace Boids
                         Random.Range(-aux1, aux1));
                     Predators.Add(Instantiate(PredatorPrefab, tmp, Quaternion.identity));
                 }
-            }
-            
-            if (!_predators && Predator.WhalesAlive < 2)
-                Predators.Add(Instantiate(PredatorPrefab, Vector3.zero, Quaternion.identity));
+            }            
 
             if (Time.time >= _nextMating)
             {

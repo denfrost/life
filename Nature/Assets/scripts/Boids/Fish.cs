@@ -11,7 +11,7 @@ namespace Boids
         public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 3, Stop = 0.4f;
         public float DeltaScale = 0.4f, MinReproductionRate = 7f, MaxReproductionRate = 10f, ScapeDistance = 2;
         public float ReproductionAge = 15, MutationFactor = 0.5f, NeighborAvoidance = 0.5f, MinAge = 30, MaxAge = 60;
-        public float MaxTDifference = 0.5f, MaxSDifference = 1, DoubleChildProb = 0.2f, NoDiscriminationChanche = 0.1f;
+        public float MaxTDifference = 0.5f, MaxSDifference = 1, DoubleChildProb = 0.2f, NoDiscriminationChance = 0.1f;
 
         private float _speed, _bite, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _energy;
         private float _reproductionRate, _nextReproduction;
@@ -103,7 +103,7 @@ namespace Boids
                     || fish._energy <= fish._capacity / 2.0f || _energy <= _capacity / 2.0f)
                     return;
                 
-                if (Random.value > NoDiscriminationChanche)
+                if (Random.value > NoDiscriminationChance)
                 {
                     float alpha1 = transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha();
                     float alpha2 = other.transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha();

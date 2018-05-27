@@ -31,7 +31,9 @@ namespace TuringPattern
         private void Awake()
         {
             _alpha = Random.Range(MinAlpha, MaxAlpha);
-            if (Time.time >= ColorTime)
+            if (Time.deltaTime >= 0.03)
+                _isFirst = true;
+            else if (Time.time >= ColorTime)
                 _isFirst = false;
             if (_isFirst) return;
             _texture = new Texture2D(Resolution, Resolution, TextureFormat.RGB24, true)

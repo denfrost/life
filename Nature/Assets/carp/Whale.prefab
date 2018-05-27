@@ -846,8 +846,8 @@ MonoBehaviour:
   MinSpeed: 0.2
   MaxSpeed: 6
   RotationSpeed: 0.2
-  MinAge: 60
-  MaxAge: 90
+  MinAge: 76
+  MaxAge: 94
   MinVision: 4
   MaxVision: 10
   MinCapacity: 8
@@ -859,6 +859,7 @@ MonoBehaviour:
   LevyChance: 3
   MateDistance: 0.08
   MutationFactor: 0.5
+  RestReproduction: 30
 --- !u!136 &136891182202725518
 CapsuleCollider:
   m_ObjectHideFlags: 1

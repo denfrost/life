@@ -258,10 +258,10 @@ MonoBehaviour:
   FoodDistance: 0.28
   EnvironmentSize: 7.5
   SeasonRate: 10
-  SourceChance: 0.42
+  SourceChance: 0.48
   AppearanceTime: 28
-  MatingSeason: 36
-  MatingDuration: 1.6
+  MatingSeason: 20
+  MatingDuration: 1.8
 --- !u!1 &849412794
 GameObject:
   m_ObjectHideFlags: 0

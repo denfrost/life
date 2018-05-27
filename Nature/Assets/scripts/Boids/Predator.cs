@@ -7,10 +7,10 @@ namespace Boids
         public float MinSpeed = 0.2f, MaxSpeed = 3f, RotationSpeed = 0.14f, MinAge = 30, MaxAge = 120;
         public float MinVision = 3, MaxVision = 10, MinCapacity = 10, MaxCapacity = 20, KillEnergy = 10;
         public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 5;
-        public float MateDistance = 0.1f, MutationFactor = 0.5f;
+        public float MateDistance = 0.1f, MutationFactor = 0.5f, RestReproduction = 44;
 
         private float _maxSpeed, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _speed;
-        private float _reproductionRate, _energy;
+        private float _energy, _nextReproduction;
         private const float GenreRatio = 0.5f;
         private bool _isMale, _mating, _isAlpha;
         private Flock _globalFlock;
@@ -20,7 +20,10 @@ namespace Boids
 
         private void Start()
         {
-            _isMale = _whalesNum % 2 == 1;
+            if (WhalesAlive < 4)
+                _isMale = _whalesNum % 2 == 1;
+            else
+                _isMale = Random.value > GenreRatio;
             _whalesNum++;
             WhalesAlive++;
             _maxSpeed = Random.Range(MinSpeed + 2, MaxSpeed);
@@ -133,8 +136,11 @@ namespace Boids
         
         public void Mate(GameObject target)
         {
-            _couple = target;
-            _mating = true;
+            if (Time.time > _nextReproduction)
+            {
+                _couple = target;
+                _mating = true;
+            }
         }
 
         public void SetAlpha(bool isAlpha)
@@ -155,6 +161,7 @@ namespace Boids
                 Random.value >= 0.5f ? _metabolism : other._metabolism,                
                 _energy + other._energy                
             );
+            _nextReproduction = Time.time + RestReproduction;
         }
         
         private void Inherit(float vision, float expectedLife, float capacity, float metabolism,
@@ -177,8 +184,7 @@ namespace Boids
         }
 
         public bool Mating
-        {
-            get { return _mating; }
+        {            
             set { _mating = value; }
         }
 
