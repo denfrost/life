@@ -9,7 +9,7 @@ namespace TuringPattern
 
         public int Steps = 100;
         public float Beta = 10f, Dx = 1, Dt = 0.001f, Da = 1, Db = 100, UpdateRate = 1f;
-        public float MinAlpha = -5f, MaxAlpha = 5f;
+        public float MinAlpha = -5f, MaxAlpha = 5f, ColorTime = 2f;
         public bool IsAnimated = true;
 
         private Texture2D _texture;
@@ -31,7 +31,7 @@ namespace TuringPattern
         private void Awake()
         {
             _alpha = Random.Range(MinAlpha, MaxAlpha);
-            if (Time.time >= 2f)
+            if (Time.time >= ColorTime)
                 _isFirst = false;
             if (_isFirst) return;
             _texture = new Texture2D(Resolution, Resolution, TextureFormat.RGB24, true)

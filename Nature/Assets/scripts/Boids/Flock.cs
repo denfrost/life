@@ -9,11 +9,12 @@ namespace Boids
         public static List<GameObject> FishFoods, Fishes, Predators, Trash;
         public GameObject FishPrefab, FoodPrefab, PredatorPrefab;
         public Transform[] SourcesTransforms;
-        public float SourcesRadius = 1.2f, FoodDistance = 0.28f, EnvironmentSize = 6;
-        public float SeasonRate = 10f, SourceChance = 0.4f;
+        public float SourcesRadius = 1.2f, FoodDistance = 0.28f, EnvironmentSize = 6, SeasonRate = 10f;
+        public float SourceChance = 0.4f, AppearanceTime = 10f, MatingSeason = 12f, MatingDuration = 4f;
         private List<List<GameObject>> _soureces;
-        private float _nextSeason;
-
+        private float _nextSeason, _nextMating;
+        private bool _predators = true, _matingSeason;
+        private Predator _bestWhale;
 
         private bool IsInRadious(Vector3 a, Vector3 b)
         {
@@ -26,7 +27,7 @@ namespace Boids
             FishFoods = new List<GameObject>(SourcesFood * SourcesTransforms.Length);
             Fishes = new List<GameObject>(NumFishes);
             Trash = new List<GameObject>(SingleFoodSize);
-            float aux = EnvironmentSize - 1.5f;
+            float aux = EnvironmentSize - 3f;
             for (int i = 0; i < NumFishes; i++)
             {
                 Vector3 pos = new Vector3(
@@ -37,15 +38,7 @@ namespace Boids
             }
             
             Predators = new List<GameObject>(PredatorsNum);
-            float aux1 = EnvironmentSize - 1f;
-            for (int i = 0; i < PredatorsNum; i++)
-            {
-                Vector3 tmp = new Vector3(
-                    Random.Range(-aux1, aux1),
-                    Random.Range(-aux1, aux1),
-                    Random.Range(-aux1, aux1));
-                Predators.Add(Instantiate(PredatorPrefab, tmp, Quaternion.identity));
-            }
+            _nextMating += AppearanceTime + MatingSeason;
 
             int c = 0;
             foreach (Transform source in SourcesTransforms)
@@ -74,7 +67,7 @@ namespace Boids
                 c++;
             }
 
-            aux1 = EnvironmentSize - 0.5f;
+            float aux1 = EnvironmentSize - 1f;
             for (int i = 0; i < SingleFoodSize; i++)
             {
                 Vector3 tmp = new Vector3(
@@ -99,7 +92,7 @@ namespace Boids
             if (Time.time >= _nextSeason)
             {
                 _nextSeason = Time.time + SeasonRate;
-                int a = Mathf.RoundToInt(Random.Range(0, _soureces.Count + 0.49f));
+                int a = Mathf.RoundToInt(Random.Range(0, _soureces.Count - 0.51f));
                 int i = 0;
                 foreach (List<GameObject> l in _soureces)
                 {
@@ -107,6 +100,71 @@ namespace Boids
                     foreach (GameObject plant in l)
                         plant.SetActive(active);
                     i++;
+                }
+            }
+
+            if (_predators && Time.time >= AppearanceTime)
+            {
+                _predators = false;
+                float aux1 = EnvironmentSize - 2f;
+                for (int i = 0; i < PredatorsNum; i++)
+                {
+                    Vector3 tmp = new Vector3(
+                        Random.Range(-aux1, aux1),
+                        Random.Range(-aux1, aux1),
+                        Random.Range(-aux1, aux1));
+                    Predators.Add(Instantiate(PredatorPrefab, tmp, Quaternion.identity));
+                }
+            }
+            
+            if (!_predators && Predator.WhalesAlive < 2)
+                Predators.Add(Instantiate(PredatorPrefab, Vector3.zero, Quaternion.identity));
+
+            if (Time.time >= _nextMating)
+            {
+                if (_matingSeason)
+                {
+                    _matingSeason = false;
+                    _nextMating += MatingSeason;
+                    foreach (GameObject whale in Predators)
+                    {
+                        Predator predator = whale.GetComponent<Predator>();
+                        if (!predator.IsMale)
+                            predator.Mating = false;
+                    }
+                    if (_bestWhale != null)
+                        _bestWhale.SetAlpha(false);
+                }
+                else
+                {
+                    float maxEnergy = 0;                    
+                    foreach (GameObject whale in Predators)
+                    {
+                        Predator predator = whale.GetComponent<Predator>();
+                        if (predator.IsMale && predator.Energy > maxEnergy)
+                        {
+                            maxEnergy = predator.Energy;
+                            _bestWhale = predator;
+                        }
+                    }
+
+                    if (_bestWhale != null)
+                    {
+                        foreach (GameObject whale in Predators)
+                        {
+                            Predator predator = whale.GetComponent<Predator>();
+                            if (!predator.IsMale)
+                                predator.Mate(_bestWhale.gameObject);
+                        }
+                        _bestWhale.SetAlpha(true);
+                        _bestWhale.Energy /= 2;
+                        _matingSeason = true;
+                        _nextMating += MatingDuration;
+                    }
+                    else
+                    {
+                        _nextMating += MatingSeason;
+                    }
                 }
             }
         }

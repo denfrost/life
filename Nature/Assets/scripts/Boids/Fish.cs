@@ -11,7 +11,7 @@ namespace Boids
         public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 3, Stop = 0.4f;
         public float DeltaScale = 0.4f, MinReproductionRate = 7f, MaxReproductionRate = 10f, ScapeDistance = 2;
         public float ReproductionAge = 15, MutationFactor = 0.5f, NeighborAvoidance = 0.5f, MinAge = 30, MaxAge = 60;
-        public float MaxTDifference = 0.5f, MaxSDifference = 1;
+        public float MaxTDifference = 0.5f, MaxSDifference = 1, DoubleChildProb = 0.2f, NoDiscriminationChanche = 0.1f;
 
         private float _speed, _bite, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _energy;
         private float _reproductionRate, _nextReproduction;
@@ -19,12 +19,12 @@ namespace Boids
         private Flock _globalFlock;
         private FishFood _lastTree;
         private const float GenreRatio = 0.5f;
-        private bool _isMale;        
+        private bool _isMale;
 
         private void Start()
         {
             _speed = Random.Range(MinSpeed + 2, MaxSpeed);
-            _isMale = Random.value >= GenreRatio;           
+            _isMale = Random.value >= GenreRatio;
             _nextReproduction = Time.time + ReproductionAge;
             _energy = (_capacity + MinCapacity) / 2;
             if (Time.time > 2.0f)
@@ -41,7 +41,7 @@ namespace Boids
                 1.0f - Random.Range(-DeltaScale, DeltaScale));
             transform.localScale = _transform;
         }
-        
+
         private void Inherit(float bite, float vision, float expectedLife, float capacity, float metabolism,
             float reproductionRate, float energy, Vector3 transformation, float alpha)
         {
@@ -57,17 +57,17 @@ namespace Boids
             transform.localScale = _transform;
             transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().SetAlpha(alpha * mutation);
         }
-        
+
         private void Reproduce(Fish other)
         {
-            float aux = _globalFlock.EnvironmentSize - 2;
+            float aux = _globalFlock.EnvironmentSize - 3;
             Vector3 pos = Random.insideUnitSphere * aux;
             GameObject fish = Instantiate(_globalFlock.FishPrefab, pos, Quaternion.identity);
             Flock.Fishes.Add(fish);
             _energy /= 2;
             other._energy /= 2;
             fish.GetComponent<Fish>().Inherit(
-                Random.value >= 0.5f ? _bite : other._bite, 
+                Random.value >= 0.5f ? _bite : other._bite,
                 Random.value >= 0.5f ? _vision : other._vision,
                 Random.value >= 0.5f ? _expectedLife : other._expectedLife,
                 Random.value >= 0.5f ? _capacity : other._capacity,
@@ -75,9 +75,10 @@ namespace Boids
                 Random.value >= 0.5f ? _reproductionRate : other._reproductionRate,
                 _energy + other._energy,
                 Random.value >= 0.5f ? _transform : other._transform,
-                Random.value >= 0.5f ? transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha() : 
-                    other.transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha()
-                );
+                Random.value >= 0.5f
+                    ? transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha()
+                    : other.transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha()
+            );
         }
 
         private void OnTriggerEnter(Collider other)
@@ -89,7 +90,10 @@ namespace Boids
             }
             else if (other.CompareTag("Predator"))
             {
-                other.GetComponent<Predator>().Eat();
+                Predator predator = other.GetComponent<Predator>();
+                if (predator.Energy >= predator.Capacity)
+                    return;
+                predator.Eat();
                 Die();
             }
             else if (!_isMale && other.CompareTag("Fish"))
@@ -98,16 +102,22 @@ namespace Boids
                 if (fish._isMale == _isMale || Time.time < _nextReproduction || Time.time < fish._nextReproduction
                     || fish._energy <= fish._capacity / 2.0f || _energy <= _capacity / 2.0f)
                     return;
-                float alpha1 = transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha();
-                float alpha2 = other.transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha();
-                float skinFactor = Mathf.Abs(alpha1 - alpha2);
-                float dist = Vector3.Distance(transform.localScale, other.transform.localScale);
-                if (skinFactor > MaxSDifference || dist > MaxTDifference)
-                    return;
                 
+                if (Random.value > NoDiscriminationChanche)
+                {
+                    float alpha1 = transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha();
+                    float alpha2 = other.transform.GetChild(0).gameObject.GetComponent<InhibitorActivator>().GetAlpha();
+                    float skinFactor = Mathf.Abs(alpha1 - alpha2);
+                    float dist = Vector3.Distance(transform.localScale, other.transform.localScale);
+                    if (skinFactor > MaxSDifference || dist > MaxTDifference)
+                        return;
+                }
+
                 fish.UpdateNexReproduction();
-                UpdateNexReproduction();               
+                UpdateNexReproduction();
                 Reproduce(fish);
+                if (Random.value <= DoubleChildProb)
+                    Reproduce(fish);
             }
         }
 

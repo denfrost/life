@@ -153,21 +153,23 @@ MonoBehaviour:
   MinCapacity: 8
   MaxCapacity: 14
   MinMetabolism: 0.2
-  MaxMetabolism: 0.8
+  MaxMetabolism: 0.52
   Inertia: 1
   LevyChance: 3
   Stop: 0.5
   DeltaScale: 0.44
-  MinReproductionRate: 6.5
-  MaxReproductionRate: 8.5
+  MinReproductionRate: 5.8
+  MaxReproductionRate: 7.6
   ScapeDistance: 2
-  ReproductionAge: 14
+  ReproductionAge: 10.2
   MutationFactor: 0.5
   NeighborAvoidance: 0.5
   MinAge: 40
-  MaxAge: 62
-  MaxTDifference: 0.6
-  MaxSDifference: 2
+  MaxAge: 70
+  MaxTDifference: 0.72
+  MaxSDifference: 2.2
+  DoubleChildProb: 0.28
+  NoDiscriminationChanche: 0.1
 --- !u!114 &114364388904960150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,6 +220,7 @@ MonoBehaviour:
   UpdateRate: 0.5
   MinAlpha: -5
   MaxAlpha: 5
+  ColorTime: 2
   IsAnimated: 0
 --- !u!136 &136349350238216602
 CapsuleCollider:
