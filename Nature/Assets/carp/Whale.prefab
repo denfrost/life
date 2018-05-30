@@ -846,20 +846,21 @@ MonoBehaviour:
   MinSpeed: 0.2
   MaxSpeed: 6
   RotationSpeed: 0.2
-  MinAge: 76
-  MaxAge: 94
+  MinAge: 90
+  MaxAge: 110
   MinVision: 4
   MaxVision: 10
   MinCapacity: 8
   MaxCapacity: 15
   KillEnergy: 4
-  MinMetabolism: 0.32
-  MaxMetabolism: 0.62
+  MinMetabolism: 0.36
+  MaxMetabolism: 0.6
   Inertia: 1
   LevyChance: 3
+  FertilityChance: 0.9
   MateDistance: 0.08
-  MutationFactor: 0.5
-  RestReproduction: 30
+  MutationFactor: 0.3
+  RestReproduction: 50
 --- !u!136 &136891182202725518
 CapsuleCollider:
   m_ObjectHideFlags: 1

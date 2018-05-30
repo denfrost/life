@@ -6,26 +6,28 @@ namespace Boids
     {
         public float MinSpeed = 0.2f, MaxSpeed = 3f, RotationSpeed = 0.14f, MinAge = 30, MaxAge = 120;
         public float MinVision = 3, MaxVision = 10, MinCapacity = 10, MaxCapacity = 20, KillEnergy = 10;
-        public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 5;
+        public float MinMetabolism = 0.01f, MaxMetabolism = 1, Inertia = 1, LevyChance = 5, FertilityChance = 0.64f;
         public float MateDistance = 0.1f, MutationFactor = 0.5f, RestReproduction = 44;
 
         private float _maxSpeed, _vision, _age, _expectedLife, _nextAge, _capacity, _metabolism, _speed;
-        private float _energy, _nextReproduction;
-        private const float GenreRatio = 0.5f;
+        private float _energy, _nextReproduction;        
         private bool _isMale, _mating, _isAlpha;
         private Flock _globalFlock;
-        private GameObject _couple;
-        private static int _whalesNum;
-        public static int WhalesAlive;
+        private GameObject _couple;        
+        public static int MalesAlive, FemalesAlive;
 
         private void Start()
         {
-            if (WhalesAlive < 4)
-                _isMale = _whalesNum % 2 == 1;
+            if (MalesAlive < FemalesAlive)
+            {
+                _isMale = true;
+                MalesAlive++;
+            }
             else
-                _isMale = Random.value > GenreRatio;
-            _whalesNum++;
-            WhalesAlive++;
+            {
+                _isMale = false;
+                FemalesAlive++;
+            }            
             _maxSpeed = Random.Range(MinSpeed + 2, MaxSpeed);
             _speed = _maxSpeed;
             _vision = Random.Range(MinVision, MaxVision);
@@ -120,7 +122,10 @@ namespace Boids
 
         private void Die()
         {
-            WhalesAlive--;
+            if (_isMale)
+                MalesAlive--;
+            else
+                FemalesAlive--;
             Flock.Predators.Remove(gameObject);
             Destroy(gameObject);
         }
@@ -161,7 +166,7 @@ namespace Boids
                 Random.value >= 0.5f ? _metabolism : other._metabolism,                
                 _energy + other._energy                
             );
-            _nextReproduction = Time.time + RestReproduction;
+            _nextReproduction = Time.time + RestReproduction * Random.value >= FertilityChance ? 0.5f : 1f;
         }
         
         private void Inherit(float vision, float expectedLife, float capacity, float metabolism,

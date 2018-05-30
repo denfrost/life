@@ -237,9 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d4ab3799b9b4747adf8fa397651961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumFishes: 24
+  NumFishes: 28
   SingleFoodSize: 10
-  SourcesFood: 44
+  SourcesFood: 50
   PredatorsNum: 4
   FishPrefab: {fileID: 1379967891346518, guid: 8345f1d13caebc240bdb9fe641021137, type: 2}
   FoodPrefab: {fileID: 1109183245217298, guid: d0af188b95bbd8442826de3c0c06b2f6, type: 2}
@@ -254,14 +254,14 @@ MonoBehaviour:
   - {fileID: 1990192442}
   - {fileID: 480125987}
   - {fileID: 1544225093}
-  SourcesRadius: 1.2
+  SourcesRadius: 1.24
   FoodDistance: 0.28
   EnvironmentSize: 7.5
   SeasonRate: 10
   SourceChance: 0.48
-  AppearanceTime: 28
-  MatingSeason: 20
-  MatingDuration: 1.8
+  AppearanceTime: 44
+  MatingSeason: 40
+  MatingDuration: 2
 --- !u!1 &849412794
 GameObject:
   m_ObjectHideFlags: 0

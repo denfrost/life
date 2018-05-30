@@ -36,9 +36,9 @@ namespace Boids
             _metabolism = Random.Range(MinMetabolism, MaxMetabolism);
             _capacity = Random.Range(MinCapacity, MaxCapacity);
             _transform = new Vector3(
-                1.0f - Random.Range(-DeltaScale, DeltaScale),
-                1.0f - Random.Range(-DeltaScale, DeltaScale),
-                1.0f - Random.Range(-DeltaScale, DeltaScale));
+                transform.localScale.x - Random.Range(-DeltaScale, DeltaScale),
+                transform.localScale.x - Random.Range(-DeltaScale, DeltaScale),
+                transform.localScale.x - Random.Range(-DeltaScale, DeltaScale));
             transform.localScale = _transform;
         }
 

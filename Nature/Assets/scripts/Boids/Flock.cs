@@ -103,7 +103,7 @@ namespace Boids
                 }
             }
 
-            if (!_predators && Predator.WhalesAlive < 2)
+            if (!_predators && Predator.MalesAlive + Predator.FemalesAlive < 2)
                 Predators.Add(Instantiate(PredatorPrefab, Vector3.zero, Quaternion.identity));
             
             if (_predators && Time.time >= AppearanceTime)
