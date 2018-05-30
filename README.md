@@ -2,6 +2,8 @@
 
 #### Project made with Unity 2018.1.0f2
 
+Video of the project can be found on [YouTube](https://youtu.be/Q9sFIWvECU8)
+
 This project consists of two species, Fishes and Whales, Fishes
 search for food moving with a Boids Algorithm. This Algorithm
 considers different points of space as attractors to each single
