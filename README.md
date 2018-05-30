@@ -1,6 +1,7 @@
 ## Artificial Life Project
 
 #### Project made with Unity 2018.1.0f2
+#### Juan Camilo Calero Espinosa
 
 Video of the project can be found on [YouTube](https://youtu.be/Q9sFIWvECU8)
 
