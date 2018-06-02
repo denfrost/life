@@ -1,9 +1,13 @@
 ## Artificial Life Project
 
 #### Project made with Unity 2018.1.0f2
-#### Juan Camilo Calero Espinosa
+##### Juan Camilo Calero Espinosa
 
-Video of the project can be found on [YouTube](https://youtu.be/Q9sFIWvECU8)
+This project is part of the Artificial Life course at the [National University of Colombia](http://unal.edu.co/), taught by [Jonatan Gómez](http://dis.unal.edu.co/~jgomezpe/). 
+
+A video of the project can be found on [YouTube](https://youtu.be/Q9sFIWvECU8)
+
+### Description
 
 This project consists of two species, Fishes and Whales, Fishes
 search for food moving with a Boids Algorithm. This Algorithm
